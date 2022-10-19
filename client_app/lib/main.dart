@@ -9,7 +9,6 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // await initialization(null);
 
   await CacheHelper.init();
   runApp(const MyApp());
@@ -33,9 +32,11 @@ class MyApp extends StatelessWidget {
       child: BlocBuilder<LocalCubit, LocalState>(
         builder: (context, state) {
           return MaterialApp(
-            locale: Locale('ar'),
-            // state is ChangeLocaleState ? state.local : const Locale('en'),
-            //  const Locale('ar'),
+            debugShowCheckedModeBanner: false,
+
+            locale:
+                state is ChangeLocaleState ? state.local : const Locale('en'),
+            // const Locale('ar'),
             supportedLocales: const [Locale('en'), Locale('ar')], //Localization
             localizationsDelegates: const [
               AppLocalizations
