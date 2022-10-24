@@ -1,7 +1,7 @@
 import 'package:client_app/business_logic/cubits/Local/local_cubit.dart';
 import 'package:client_app/data/Shared/AppLocalizations.dart';
 import 'package:client_app/data/Shared/CacheHelper.dart';
-import 'package:client_app/presentation/screens/splash.dart';
+import 'package:client_app/presentation/screens/Splash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';

@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:client_app/main.dart';
+import 'package:client_app/presentation/screens/OnBoarding.dart';
 import 'package:flutter/material.dart';
 import 'package:client_app/data/Shared/AppLocalizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -19,9 +20,7 @@ class _SplashState extends State<Splash> {
     Timer(
         Duration(seconds: 3),
         () => Navigator.of(context).pushReplacement(MaterialPageRoute(
-            builder: (BuildContext context) => MyHomePage(
-                  title: "Home Page",
-                ))));
+            builder: (BuildContext context) => OnBoarding())));
   }
 
   @override
