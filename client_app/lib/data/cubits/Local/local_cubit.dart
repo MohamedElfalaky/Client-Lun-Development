@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:client_app/data/Shared/CacheHelper.dart';
+import 'package:client_app/helpers/CacheHelper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';

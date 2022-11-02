@@ -1,4 +1,4 @@
-import 'package:talabatcom/Data/Models/AboutUs/AboutUsModel.dart';
+import 'package:client_app/data/Models/AboutUsModel/AboutUsModel.dart';
 
 abstract class AboutUsState {}
 

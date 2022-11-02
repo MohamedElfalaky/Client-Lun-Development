@@ -6,7 +6,7 @@ import 'package:flutter/services.dart';
 class AppLocalizations {
   final Locale? local;
   AppLocalizations(this.local);
-
+//
   static AppLocalizations? of(BuildContext context) {
     return Localizations.of<AppLocalizations>(context, AppLocalizations);
   }

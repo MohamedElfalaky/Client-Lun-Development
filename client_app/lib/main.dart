@@ -1,5 +1,5 @@
-import 'package:client_app/data/Shared/AppLocalizations.dart';
-import 'package:client_app/data/Shared/CacheHelper.dart';
+import 'package:client_app/helpers/AppLocalizations.dart';
+import 'package:client_app/helpers/CacheHelper.dart';
 import 'package:client_app/data/cubits/Local/local_cubit.dart';
 import 'package:client_app/presentation/screens/Splash.dart';
 import 'package:flutter/material.dart';

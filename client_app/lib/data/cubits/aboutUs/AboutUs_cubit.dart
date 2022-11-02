@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
-import 'package:talabatcom/Data/Cubit/AboutUs_cubit/AboutUs_state.dart';
-import 'package:talabatcom/Data/Models/AboutUs/AboutUsModel.dart';
-import 'package:talabatcom/Data/reposetories/AboutUs/AboutUs.dart';
+import 'package:client_app/data/Models/AboutUsModel/AboutUsModel.dart';
+import 'package:client_app/data/cubits/aboutUs/AboutUs_state.dart';
+import 'package:client_app/data/repositories/AboutUs.dart';
 
 class AboutUsCubit extends Cubit<AboutUsState> {
   AboutUsCubit() : super(AboutUsInitial());
