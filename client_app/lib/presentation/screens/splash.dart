@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:client_app/main.dart';
-import 'package:client_app/presentation/screens/OnBoarding.dart';
+import 'package:client_app/presentation/screens/OnboardingScreen/OnBoarding.dart';
 import 'package:flutter/material.dart';
-import 'package:client_app/data/Shared/AppLocalizations.dart';
+import 'package:client_app/helpers/AppLocalizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class Splash extends StatefulWidget {
