@@ -1,6 +1,7 @@
 import 'package:client_app/data/cubits/Local/local_cubit.dart';
 import 'package:client_app/helpers/AppLocalizations.dart';
 import 'package:client_app/helpers/CacheHelper.dart';
+import 'package:client_app/presentation/screens/LogIn/LogIn.dart';
 import 'package:client_app/presentation/screens/Registration/Registeration.dart';
 import 'package:client_app/presentation/screens/Splash.dart';
 import 'package:flutter/material.dart';
@@ -74,8 +75,9 @@ class MyApp extends StatelessWidget {
               '/splash': (context) => Splash(),
               '/onboarding': (context) => Splash(),
               '/registration': (context) => Registration(),
+              '/login': (context) => LogIn(),
             },
-            home: Splash(),
+            home: LogIn(),
           );
         },
       ),

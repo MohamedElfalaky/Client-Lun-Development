@@ -26,7 +26,7 @@ class AboutUsRepo {
         //   final data = AboutUsModel.fromJson(jsonDecode(response.body));
         //   return data;
       } else {
-        MyApplication().showToastMessage(responsemap["message"]);
+        MyApplication.showToastMessage(responsemap["message"]);
       }
     } on TimeoutException catch (e) {
     } on SocketException catch (e) {
