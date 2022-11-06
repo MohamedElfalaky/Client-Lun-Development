@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class Registeration extends StatefulWidget {
-  const Registeration({super.key});
+class Registration extends StatefulWidget {
+  const Registration({super.key});
 
   @override
-  State<Registeration> createState() => _RegisterationState();
+  State<Registration> createState() => _RegistrationState();
 }
 
-class _RegisterationState extends State<Registeration> {
+class _RegistrationState extends State<Registration> {
   @override
   Widget build(BuildContext context) {
     return Container();

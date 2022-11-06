@@ -45,6 +45,16 @@ dependencies:
   flutter_native_splash: ^2.2.11
   smooth_page_indicator: ^1.0.0+2
   http: ^0.13.5
+  responsive_framework: ^0.2.0
+  connectivity_plus: ^3.0.2
+  lottie: ^1.4.3
+  one_context: ^2.1.0
+  bloc: ^8.1.0
+  hexcolor: ^3.0.1
+  get_it: ^7.2.0
+  injectable: ^1.5.4
+  injectable_generator: ^1.5.4
+  conditional_builder_null_safety: ^0.0.6
 
 dev_dependencies:
   flutter_test:
@@ -79,6 +89,7 @@ flutter:
   assets:
     - assets/
     - assets/Lang/
+    - assets/Images/svg/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
