@@ -1,28 +1,18 @@
 import 'dart:async';
 
-import 'package:client_app/main.dart';
-import 'package:client_app/presentation/screens/OnboardingScreen/OnBoarding.dart';
-import 'package:flutter/material.dart';
 import 'package:client_app/helpers/AppLocalizations.dart';
+import 'package:client_app/presentation/screens/SendOTP/SendOTP.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class Splash extends StatefulWidget {
-  Splash({super.key});
+  const Splash({super.key});
 
   @override
   State<Splash> createState() => _SplashState();
 }
 
 class _SplashState extends State<Splash> {
-  @override
-  void initState() {
-    super.initState();
-    Timer(
-        Duration(seconds: 3),
-        () => Navigator.of(context).pushReplacement(MaterialPageRoute(
-            builder: (BuildContext context) => OnBoarding())));
-  }
-
   @override
   Widget build(BuildContext context) {
     // Future initialization2(BuildContext? context) async {
@@ -36,9 +26,18 @@ class _SplashState extends State<Splash> {
     // }
 
     final Widget svg = SvgPicture.asset('TalabatLogo'.tr(context),
-        color: Color(0xffEDEDF4), semanticsLabel: 'Acme Logo');
+        color: const Color(0xffEDEDF4), semanticsLabel: 'Acme Logo');
     return Scaffold(
-        backgroundColor: Color(0xFFF5504C),
+        backgroundColor: const Color(0xFFF5504C),
         body: Center(child: Center(child: svg)));
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    Timer(
+        const Duration(seconds: 3),
+        () => Navigator.of(context).pushReplacement(MaterialPageRoute(
+            builder: (BuildContext context) => const SendOTP())));
   }
 }

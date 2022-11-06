@@ -55,6 +55,10 @@ dependencies:
   injectable: ^1.5.4
   injectable_generator: ^1.5.4
   conditional_builder_null_safety: ^0.0.6
+  country_icons: ^2.0.2
+  equatable: ^2.0.5
+  flutter_styled_toast: ^2.1.3
+  pin_code_fields: ^7.4.0
 
 dev_dependencies:
   flutter_test:
@@ -90,6 +94,7 @@ flutter:
     - assets/
     - assets/Lang/
     - assets/Images/svg/
+    - assets/Images/lottie/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
