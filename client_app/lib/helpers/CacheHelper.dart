@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 class CacheHelper {
@@ -9,6 +11,14 @@ class CacheHelper {
 
   static Future saveToShared(String key, String value) async {
     await prefs!.setString(key, value);
+  }
+
+  static saveBoolToShared(String key, bool value) async {
+    await prefs!.setBool(key, value);
+  }
+
+  static getBoolFromShared(String key) {
+    return prefs!.getBool(key);
   }
 
   static getFromShared(String key) {
