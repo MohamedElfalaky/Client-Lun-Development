@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:client_app/data/cubits/cubit/check_phone_cubit.dart';
 import 'package:client_app/helpers/AppLocalizations.dart';
 import 'package:client_app/helpers/myApplication.dart';
+import 'package:client_app/main.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -193,7 +194,7 @@ class _SendOTPState extends State<SendOTP> {
                                       if (kDebugMode) {
                                         print('phone is exist');
                                       }
-                                      showToast(
+                                      MyApplication.showToast(
                                         text: 'phone is exist',
                                         color: ToastColors.success,
                                       );

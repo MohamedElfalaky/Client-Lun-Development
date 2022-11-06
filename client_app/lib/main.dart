@@ -77,10 +77,9 @@ class MyApp extends StatelessWidget {
               '/splash': (context) => const Splash(),
               '/register': (context) => const Registration(),
               '/sendOTP': (context) => const SendOTP(),
-              '/splash': (context) => const Splash(),
               '/onboarding': (context) => const Splash(),
               '/registration': (context) => const Registration(),
-              '/login': (context) => LogIn(),
+              '/login': (context) => const LogIn(),
             },
             home: const LogIn(),
           );

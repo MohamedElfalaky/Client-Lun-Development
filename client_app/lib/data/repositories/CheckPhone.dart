@@ -28,7 +28,7 @@ class CheckPhoneRepo {
         final data = Check.fromJson(response.body);
         return data;
       } else {
-        MyApplication().showToastMessage(responsemap["message"]);
+        // MyApplication().showToastMessage(responsemap["message"]);
       }
     } on TimeoutException catch (e) {
       if (kDebugMode) {

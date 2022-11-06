@@ -216,7 +216,7 @@ class _RegistrationState extends State<Registration> {
                                       if (kDebugMode) {
                                         print('phone is exist');
                                       }
-                                      showToast(
+                                      MyApplication.showToast(
                                         text: 'phone is exist'.tr(context),
                                         color: ToastColors.success,
                                       );
