@@ -1,7 +1,9 @@
 import 'dart:async';
 
 import 'package:client_app/helpers/AppLocalizations.dart';
-import 'package:client_app/presentation/screens/SendOTP/SendOTP.dart';
+import 'package:client_app/helpers/CacheHelper.dart';
+import 'package:client_app/presentation/screens/OnboardingScreen/OnBoarding.dart';
+import 'package:client_app/presentation/screens/Registration/Registeration.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -13,18 +15,9 @@ class Splash extends StatefulWidget {
 }
 
 class _SplashState extends State<Splash> {
+  final showLogin = CacheHelper.getBoolFromShared("showHome");
   @override
   Widget build(BuildContext context) {
-    // Future initialization2(BuildContext? context) async {
-    //   await Future.delayed(Duration(seconds: 2));
-    //   Navigator.push(
-    //       context!,
-    //       MaterialPageRoute<void>(
-    //           builder: (BuildContext context) => const MyHomePage(
-    //                 title: "Home Page",
-    //               )));
-    // }
-
     final Widget svg = SvgPicture.asset('TalabatLogo'.tr(context),
         color: const Color(0xffEDEDF4), semanticsLabel: 'Acme Logo');
     return Scaffold(
@@ -38,6 +31,8 @@ class _SplashState extends State<Splash> {
     Timer(
         const Duration(seconds: 3),
         () => Navigator.of(context).pushReplacement(MaterialPageRoute(
-            builder: (BuildContext context) => const SendOTP())));
+            builder: (BuildContext context) => showLogin == true
+                ? const Registration()
+                : const OnBoarding())));
   }
 }

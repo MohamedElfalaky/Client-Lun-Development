@@ -12,6 +12,7 @@ class AppLocalizations {
   }
 
 //
+//
   static const LocalizationsDelegate<AppLocalizations> delegate =
       _AppLocalizationsDelegate();
 

@@ -9,7 +9,7 @@ class OnBoardingController {
   ///methods
 
   Widget buildBlur(
-          {required Widget child, double sigmaX = 10, double sigmaY = 9}) =>
+          {required Widget child, double sigmaX = 11, double sigmaY = 9}) =>
       ClipRRect(
         borderRadius: BorderRadius.zero,
         child: BackdropFilter(
