@@ -1,8 +1,11 @@
+import 'package:client_app/app/theme.dart';
 import 'package:client_app/data/cubits/Local/local_cubit.dart';
+import 'package:client_app/data/cubits/cubit/check_phone_cubit.dart';
 import 'package:client_app/helpers/AppLocalizations.dart';
 import 'package:client_app/helpers/CacheHelper.dart';
 import 'package:client_app/presentation/screens/LogIn/LogIn.dart';
 import 'package:client_app/presentation/screens/Registration/Registeration.dart';
+import 'package:client_app/presentation/screens/SendOTP/SendOTP.dart';
 import 'package:client_app/presentation/screens/Splash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -32,12 +35,13 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => LocalCubit()..getSavedLanguage()),
+        BlocProvider<CheckPhoneCubit>(create: (context) => CheckPhoneCubit()),
       ],
       child: BlocBuilder<LocalCubit, LocalState>(
         builder: (context, state) {
           return MaterialApp(
             builder: (context, child) => ResponsiveWrapper.builder(
-              child,
+              BouncingScrollWrapper.builder(context, child!),
               maxWidth: 1200,
               minWidth: 450,
               defaultScale: true,
@@ -67,17 +71,18 @@ class MyApp extends StatelessWidget {
               GlobalCupertinoLocalizations.delegate
             ],
             title: 'Flutter Demo',
-            theme: ThemeData(
-              primarySwatch: Colors.blue,
-            ),
+            theme: myTheme,
             routes: {
               // '/': (context) => const LogIn(),
-              '/splash': (context) => Splash(),
-              '/onboarding': (context) => Splash(),
-              '/registration': (context) => Registration(),
+              '/splash': (context) => const Splash(),
+              '/register': (context) => const Registration(),
+              '/sendOTP': (context) => const SendOTP(),
+              '/splash': (context) => const Splash(),
+              '/onboarding': (context) => const Splash(),
+              '/registration': (context) => const Registration(),
               '/login': (context) => LogIn(),
             },
-            home: LogIn(),
+            home: const LogIn(),
           );
         },
       ),

@@ -1,6 +1,61 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
+void navigateAndFinish(BuildContext context, Widget widget, {data}) =>
+    Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(
+        builder: (context) => widget,
+        settings: RouteSettings(
+          arguments: data,
+        ),
+      ),
+      (Route<dynamic> route) => false,
+    );
+
+void navigateTo(BuildContext context, Widget widget, {data}) => Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => widget,
+        settings: RouteSettings(
+          arguments: data,
+        ),
+      ),
+    );
+
+Color setToastColor(ToastColors color) {
+  Color c;
+
+  switch (color) {
+    case ToastColors.error:
+      c = Colors.red;
+      break;
+    case ToastColors.success:
+      c = Colors.green;
+      break;
+    case ToastColors.warning:
+      c = Colors.amber;
+      break;
+  }
+
+  return c;
+}
+
+void showToast({
+  required String text,
+  required ToastColors color,
+}) {
+  Fluttertoast.showToast(
+    msg: text,
+    toastLength: Toast.LENGTH_SHORT,
+    gravity: ToastGravity.BOTTOM,
+    backgroundColor: setToastColor(color),
+    textColor: Colors.white,
+    fontSize: 16,
+  );
+}
+import 'package:fluttertoast/fluttertoast.dart';
+
 class MyApplication {
   bool checkInternet() {
     return true;
@@ -15,29 +70,11 @@ class MyApplication {
         .pushReplacement(MaterialPageRoute(builder: ((context) => page)));
   }
 
-  static navigateToRemove(Widget page, BuildContext context) {
-    Navigator.of(context).pushAndRemoveUntil(
-      MaterialPageRoute(builder: ((context) => page)),
-      ModalRoute.withName('/'),
-    );
-  }
+  showToastMessage(String message) {}
+}
 
-  static showToastMessage(String message) {
-    Fluttertoast.showToast(
-        msg: message,
-        toastLength: Toast.LENGTH_LONG,
-        gravity: ToastGravity.BOTTOM,
-        timeInSecForIosWeb: 1,
-        backgroundColor: Color.fromARGB(255, 18, 228, 43),
-        textColor: Colors.white,
-        fontSize: 16.0);
-  }
-
-  static double hightClc(BuildContext context, int myHeight) {
-    return MediaQuery.of(context).size.height * myHeight / 812;
-  }
-
-  static double widthClc(BuildContext context, int myWidth) {
-    return MediaQuery.of(context).size.width * myWidth / 375;
-  }
+enum ToastColors {
+  success,
+  error,
+  warning,
 }
