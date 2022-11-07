@@ -109,5 +109,7 @@
     "password hint": "يجب أن يكون على الأقل 8 أرقام",
     "confirm password hint": "يجب أن تتطابق كلتا كلمة المرور",
     "register": "تسجيل",
-    "type your name": "اكتب اسمك"
+    "type your name": "اكتب اسمك",
+    "phoneRequired": "رقم الهاتف مطلوب",
+    "phoneLength": "يجب أن يكون رقم الهاتف 8 أرقام"
 }

@@ -2,9 +2,9 @@ import 'package:client_app/app/theme.dart';
 import 'package:client_app/data/cubits/Local/local_cubit.dart';
 import 'package:client_app/data/cubits/cubit/check_phone_cubit.dart';
 import 'package:client_app/data/cubits/cubit/check_verfification_cubit.dart';
+import 'package:client_app/data/cubits/debug/app_bloc_observer.dart';
 import 'package:client_app/helpers/AppLocalizations.dart';
 import 'package:client_app/helpers/CacheHelper.dart';
-import 'package:client_app/presentation/screens/LogIn/LogIn.dart';
 import 'package:client_app/presentation/screens/Registration/Registeration.dart';
 import 'package:client_app/presentation/screens/SendOTP/SendOTP.dart';
 import 'package:client_app/presentation/screens/Splash.dart';
@@ -16,7 +16,7 @@ import 'package:responsive_framework/responsive_framework.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  Bloc.observer = MyBlocObserver();
   await CacheHelper.init();
   // CacheHelper.saveBoolToShared("showHome", false);  // بمسح الكاش بتاع الاونبوردنج
   runApp(const MyApp());
@@ -27,10 +27,14 @@ Future initialization(BuildContext? context) async {
   FlutterNativeSplash.remove();
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -84,10 +88,23 @@ class MyApp extends StatelessWidget {
               '/onboarding': (context) => const Splash(),
               '/registration': (context) => const Registration(),
             },
-            home: const LogIn(),
+            home: const Registration(),
           );
         },
       ),
     );
+  }
+
+  // This widget is the root of your application.
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    WidgetsBinding.instance.addObserver(this);
+    super.initState();
   }
 }

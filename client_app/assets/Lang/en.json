@@ -108,5 +108,7 @@
     "password hint": "Must be at least 8 numbers",
     "confirm password hint": "Both password must match",
     "register": "Register",
-    "type your name": "Type your name"
+    "type your name": "Type your name",
+    "phoneRequired": "Phone is required",
+    "phoneLength": "Phone must be 8 numbers"
 }

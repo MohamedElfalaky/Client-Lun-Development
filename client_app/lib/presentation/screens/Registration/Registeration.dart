@@ -19,6 +19,20 @@ class Registration extends StatefulWidget {
 class _RegistrationState extends State<Registration> {
   final TextEditingController _phone = TextEditingController();
   late String flagNumber = '+966';
+  String? get _errorText {
+    // at any time, we can get the text from _controller.value.text
+    final text = _phone.value.text;
+    // Note: you can do your own custom validation here
+    // Move this logic this outside the widget for more testable code
+    if (text.isEmpty) {
+      return 'phoneRequired'.tr(context);
+    }
+    if (text.length < 8) {
+      return 'phoneLength'.tr(context);
+    }
+    // return null if the text is valid
+    return null;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -152,6 +166,15 @@ class _RegistrationState extends State<Registration> {
                               ),
                             ),
                             defaultTextField(
+                              validate: (String? value) {
+                                if (value!.isEmpty) {
+                                  return 'phoneRequired'.tr(context);
+                                }
+                                if (value.length < 8) {
+                                  return 'phoneLength'.tr(context);
+                                }
+                                return null;
+                              },
                               width: 348,
                               height: 48,
                               // color: const Color(0xffF2F2F2),
@@ -219,16 +242,18 @@ class _RegistrationState extends State<Registration> {
                                       if (kDebugMode) {
                                         print('phone is exist');
                                       }
-                                      MyApplication.showToast(
-                                          text: state.checkPhone!.message!,
-                                          color: ToastColors.success);
+                                      // MyApplication.showToast(
+                                      //     text: state.checkPhone!.message!,
+                                      //     color: ToastColors.success);
                                       MyApplication.navigateTo(
                                           SendOTP(phone: _phone.text), context);
                                     } else {
                                       if (kDebugMode) {
                                         print('phone is not exist');
                                       }
-
+                                      // MyApplication.showToast(
+                                      //     text: state.checkPhone!.message!,
+                                      //     color: ToastColors.error);
                                       // navigateTo(
                                       //   context,
                                       //   PhoneOTP(
@@ -254,10 +279,10 @@ class _RegistrationState extends State<Registration> {
                                       ),
                                     ),
                                     onPressed: () {
-                                      print(_phone.text);
+                                      print(flagNumber + _phone.text);
                                       context
                                           .read<CheckPhoneCubit>()
-                                          .checkPhone(_phone.text);
+                                          .checkPhone(flagNumber + _phone.text);
                                     },
                                     child: Text(
                                       'Next'.tr(context),
@@ -326,5 +351,11 @@ class _RegistrationState extends State<Registration> {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _phone.dispose();
+    super.dispose();
   }
 }
