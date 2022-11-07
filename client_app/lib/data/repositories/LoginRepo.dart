@@ -3,18 +3,19 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:client_app/app/constants.dart';
-import 'package:client_app/data/Models/CheckPhone/check_phone.dart';
+import 'package:client_app/data/Models/CheckPhone/check.phone.dart';
+import 'package:client_app/data/Models/login_model/login_model.dart';
 import 'package:client_app/helpers/myApplication.dart';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 
-class CheckPhoneRepo {
-  Future<CheckPhone?> checkPhone(String phone) async {
+class LoginRepo {
+  Future<LoginModel?> userLogin({required phone, required password}) async {
     try {
       var response = await http.post(
-        Uri.parse('$baseURL/api/checkPhone'),
-        body: {'phone': phone},
-        // headers: headers,
+        Uri.parse('$baseURL/api/login'),
+        body: {'phone': phone, 'password': password},
+        headers: headers,
       );
       Map<String, dynamic> responsemap = json.decode(response.body);
       if (kDebugMode) {
@@ -24,13 +25,19 @@ class CheckPhoneRepo {
         if (kDebugMode) {
           print(responsemap);
         }
-        final data = CheckPhone.fromJson(responsemap);
+        final data = LoginModel.fromJson(responsemap);
         MyApplication.showToast(
-            text: responsemap["message"], color: ToastColors.success);
+            text: data.message!, color: ToastColors.success);
+        return data;
+      } else if (response.statusCode == 200 &&
+          responsemap["success"] == false) {
+        final data = LoginModel.fromJson(responsemap);
+        MyApplication.showToast(text: data.message!, color: ToastColors.error);
         return data;
       } else {
-        MyApplication.showToast(
-            text: responsemap["message"], color: ToastColors.error);
+        if (kDebugMode) {
+          print(responsemap);
+        }
       }
     } on TimeoutException catch (e) {
       if (kDebugMode) {
@@ -42,12 +49,9 @@ class CheckPhoneRepo {
       }
     } catch (e) {
       if (kDebugMode) {
-        print('Exception: ${e.toString()}');
+        print("Exception: ${e.toString()}");
       }
     }
     return null;
-
-    // return null;
-    // return null;
   }
 }

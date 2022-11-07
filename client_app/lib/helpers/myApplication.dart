@@ -1,23 +1,6 @@
+import 'package:client_app/style/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-
-Color setToastColor(ToastColors color) {
-  Color c;
-
-  switch (color) {
-    case ToastColors.error:
-      c = Colors.red;
-      break;
-    case ToastColors.success:
-      c = Colors.green;
-      break;
-    case ToastColors.warning:
-      c = Colors.amber;
-      break;
-  }
-
-  return c;
-}
 
 class MyApplication {
   bool checkInternet() {
@@ -25,7 +8,7 @@ class MyApplication {
   }
 
   static double hightClc(BuildContext context, int myHeight) {
-    return MediaQuery.of(context).size.height * myHeight / 812;
+    return MediaQuery.of(context).size.height * myHeight / 926;
   }
 
   static navigateTo(Widget page, BuildContext context) {
@@ -61,7 +44,7 @@ class MyApplication {
   }
 
   static double widthClc(BuildContext context, int myWidth) {
-    return MediaQuery.of(context).size.width * myWidth / 375;
+    return MediaQuery.of(context).size.width * myWidth / 428;
   }
 }
 

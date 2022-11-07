@@ -1,6 +1,16 @@
+import 'package:client_app/data/cubits/Login_cubit/login_cubit.dart';
 import 'package:client_app/helpers/myApplication.dart';
+import 'package:client_app/presentation/screens/LogIn/components/Buttons.dart';
+import 'package:client_app/presentation/screens/LogIn/components/CountryPickerContainer.dart';
+import 'package:client_app/presentation/screens/LogIn/components/PhoneTextField.dart';
+import 'package:client_app/presentation/screens/LogIn/components/PasswordTextField.dart';
+import 'package:client_app/presentation/widgets/MyButton.dart';
+import 'package:client_app/presentation/widgets/myFormTextField.dart';
+import 'package:client_app/presentation/widgets/shared.dart';
 import 'package:client_app/style/icons.dart';
+import 'package:fl_country_code_picker/fl_country_code_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
 class LogIn extends StatefulWidget {
@@ -9,6 +19,13 @@ class LogIn extends StatefulWidget {
   @override
   State<LogIn> createState() => _LogInState();
 }
+
+final _formKey = GlobalKey<FormState>();
+const countryPicker = FlCountryCodePicker();
+final phoneText = TextEditingController();
+final passwordText = TextEditingController();
+
+CountryCode? countryCode;
 
 class _LogInState extends State<LogIn> {
   @override
@@ -37,7 +54,7 @@ class _LogInState extends State<LogIn> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       SizedBox(
-                        height: MyApplication.hightClc(context, 63),
+                        height: MyApplication.hightClc(context, 60),
                       ),
                       SvgPicture.asset(
                         logInLogo,
@@ -47,8 +64,59 @@ class _LogInState extends State<LogIn> {
                       SizedBox(
                         height: MyApplication.hightClc(context, 24),
                       ),
-                      Text(
+                      const Text(
                         "Hello Again !",
+                        style:
+                            TextStyle(color: Color(0xFFEDEDF4), fontSize: 42),
+                      ),
+                      const Text(
+                        "Welcome back your've been missed",
+                        style: TextStyle(
+                            color: Color(
+                              0xFFEDEDF4,
+                            ),
+                            fontSize: 16),
+                      ),
+                      SizedBox(
+                        height: MyApplication.hightClc(context, 48),
+                      ),
+                      Form(
+                        key: _formKey,
+                        child: Container(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: MyApplication.widthClc(context, 16),
+                              vertical: MyApplication.hightClc(context, 24)),
+                          // height: MyApplication.hightClc(context, 417),
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .secondary
+                                  .withOpacity(0.8),
+                              borderRadius: BorderRadius.circular(20)),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              PhoneTextField(),
+                              BlocConsumer<LoginCubit, LoginState>(
+                                  listener: (context, state) {
+                                // TODO: implement listener
+                              }, builder: (context, state) {
+                                return PasswordTextField();
+                              }),
+                              Buttons(
+                                formKey: _formKey,
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: MyApplication.hightClc(context, 80),
+                      ),
+                      Text(
+                        "All Rights Reserved LUN Development 2021©",
                         style: TextStyle(color: Color(0xFFEDEDF4)),
                       )
                     ],

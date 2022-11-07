@@ -2,6 +2,8 @@ import 'dart:async';
 import 'dart:ui';
 
 import 'package:client_app/helpers/CacheHelper.dart';
+import 'package:client_app/helpers/myApplication.dart';
+import 'package:client_app/presentation/screens/LogIn/LogIn.dart';
 import 'package:client_app/presentation/screens/OnboardingScreen/components/OnePageView.dart';
 import 'package:client_app/presentation/screens/OnboardingScreen/controller/onboardingController.dart';
 import 'package:client_app/style/colors.dart';
@@ -31,7 +33,7 @@ class _OnBoardingState extends State<OnBoarding> {
         pageChanged++;
       } else {
         CacheHelper.saveBoolToShared("showHome", true);
-        Navigator.pushReplacementNamed(context, "/registration");
+        MyApplication.navigateToReplace(LogIn(), context);
       }
 
       controller.animateToPage(
@@ -103,8 +105,7 @@ class _OnBoardingState extends State<OnBoarding> {
                             ),
                             onPressed: () {
                               CacheHelper.saveBoolToShared("showHome", true);
-                              Navigator.pushReplacementNamed(
-                                  context, "/registration");
+                              MyApplication.navigateToReplace(LogIn(), context);
                               print(CacheHelper.getBoolFromShared("showHome"));
                             },
                             child: Center(
@@ -209,8 +210,8 @@ class _OnBoardingState extends State<OnBoarding> {
                             onPressed: () {
                               if (pageChanged == 2) {
                                 CacheHelper.saveBoolToShared("showHome", true);
-                                Navigator.pushReplacementNamed(
-                                    context, "/registration");
+                                MyApplication.navigateToReplace(
+                                    LogIn(), context);
                               } else {
                                 controller.nextPage(
                                     duration: Duration(milliseconds: 500),

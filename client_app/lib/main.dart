@@ -1,24 +1,27 @@
 import 'package:client_app/app/theme.dart';
 import 'package:client_app/data/cubits/Local/local_cubit.dart';
+import 'package:client_app/data/cubits/Login_cubit/login_cubit.dart';
 import 'package:client_app/data/cubits/cubit/check_phone_cubit.dart';
 import 'package:client_app/data/cubits/cubit/check_verfification_cubit.dart';
 import 'package:client_app/data/cubits/debug/app_bloc_observer.dart';
 import 'package:client_app/helpers/AppLocalizations.dart';
 import 'package:client_app/helpers/CacheHelper.dart';
+import 'package:client_app/presentation/screens/OnboardingScreen/OnBoarding.dart';
 import 'package:client_app/presentation/screens/Registration/Registeration.dart';
 import 'package:client_app/presentation/screens/SendOTP/SendOTP.dart';
-import 'package:client_app/presentation/screens/Splash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
+import 'presentation/screens/splash.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = MyBlocObserver();
   await CacheHelper.init();
-  // CacheHelper.saveBoolToShared("showHome", false);  // بمسح الكاش بتاع الاونبوردنج
+  // CacheHelper.saveBoolToShared("showHome", false); // بمسح الكاش بتاع الاونبوردنج
   runApp(const MyApp());
 }
 
@@ -43,6 +46,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
         BlocProvider<CheckPhoneCubit>(create: (context) => CheckPhoneCubit()),
         BlocProvider<CheckVerfificationCubit>(
             create: (context) => CheckVerfificationCubit()),
+        BlocProvider<LoginCubit>(create: (context) => LoginCubit()),
       ],
       child: BlocBuilder<LocalCubit, LocalState>(
         builder: (context, state) {
@@ -84,11 +88,10 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
               '/splash': (context) => const Splash(),
               '/register': (context) => const Registration(),
               '/sendOTP': (context) => SendOTP(),
-              '/splash': (context) => const Splash(),
-              '/onboarding': (context) => const Splash(),
+              '/onboarding': (context) => const OnBoarding(),
               '/registration': (context) => const Registration(),
             },
-            home: const Registration(),
+            home: const Splash(),
           );
         },
       ),
