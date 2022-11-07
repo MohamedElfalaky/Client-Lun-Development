@@ -27,7 +27,7 @@ final ThemeData myTheme = ThemeData(
       onSecondary: Color(0xff000000),
       onSurface: Color(0xff000000),
       onBackground: Color(0xff000000),
-      onError: Color(0xffffffff),
+      onError: Color(0xffb00020),
       brightness: Brightness.light),
   canvasColor: const Color(0xffededf4),
   scaffoldBackgroundColor: const Color(0xfffafafa),
@@ -76,14 +76,14 @@ final ThemeData myTheme = ThemeData(
       onSecondary: Color(0xffffffff),
       onSurface: Color(0xff000000),
       onBackground: Color(0xffffffff),
-      onError: Color(0xffffffff),
+      onError: Color(0xffb00020),
       brightness: Brightness.light,
     ),
   ),
   textTheme: const TextTheme(
     headline1: TextStyle(
       color: Color(0x8a000000),
-      fontSize: null,
+      fontSize: 14,
       fontWeight: FontWeight.w400,
       fontStyle: FontStyle.normal,
     ),
@@ -255,12 +255,12 @@ final ThemeData myTheme = ThemeData(
     ),
     hintStyle: TextStyle(
       color: Color(0xff707070),
-      fontSize: null,
+      fontSize: 16,
       fontWeight: FontWeight.w400,
       fontStyle: FontStyle.normal,
     ),
     errorStyle: TextStyle(
-      color: Color(0xdd000000),
+      color: Color(0xffb00020),
       fontSize: null,
       fontWeight: FontWeight.w400,
       fontStyle: FontStyle.normal,
@@ -292,7 +292,7 @@ final ThemeData myTheme = ThemeData(
     floatingLabelBehavior: FloatingLabelBehavior.never,
     errorBorder: UnderlineInputBorder(
       borderSide: BorderSide(
-        color: Color(0xff000000),
+        color: Color(0xffb00020),
         width: 1,
         style: BorderStyle.solid,
       ),

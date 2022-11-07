@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 Widget defaultTextField({
-  required TextEditingController controller,
-  required TextInputType type,
+  TextEditingController? controller,
+  TextInputType? type,
   Function? onSubmit,
   Function? onChange,
   Function? onTap,

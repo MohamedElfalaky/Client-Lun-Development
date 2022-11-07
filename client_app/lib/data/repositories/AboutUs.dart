@@ -16,11 +16,11 @@ class AboutUsRepo {
         Uri.parse('$apikey/page?id=1'),
         headers: headers,
       );
-      var response2 = await http.post(
-        Uri.parse('$apikey/page?id=1'),
-        body: {'', ''},
-        headers: headers,
-      );
+      // var response2 = await http.post(
+      //   Uri.parse('$apikey/page?id=1'),
+      //   body: {'', ''},
+      //   headers: headers,
+      // );
       Map<String, dynamic> responsemap = json.decode(response.body);
       if (response.statusCode == 200 && responsemap["success"] == true) {
         //   final data = AboutUsModel.fromJson(jsonDecode(response.body));

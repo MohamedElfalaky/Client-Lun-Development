@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:client_app/helpers/AppLocalizations.dart';
 import 'package:client_app/helpers/CacheHelper.dart';
+import 'package:client_app/presentation/screens/LogIn/LogIn.dart';
 import 'package:client_app/presentation/screens/OnboardingScreen/OnBoarding.dart';
 import 'package:client_app/presentation/screens/Registration/Registeration.dart';
 import 'package:flutter/material.dart';
@@ -31,8 +32,7 @@ class _SplashState extends State<Splash> {
     Timer(
         const Duration(seconds: 3),
         () => Navigator.of(context).pushReplacement(MaterialPageRoute(
-            builder: (BuildContext context) => showLogin == true
-                ? const Registration()
-                : const OnBoarding())));
+            builder: (BuildContext context) =>
+                showLogin == true ? const LogIn() : const OnBoarding())));
   }
 }

@@ -4,15 +4,17 @@ import 'dart:io';
 
 import 'package:client_app/app/constants.dart';
 import 'package:client_app/data/Models/CheckPhone/check.phone.dart';
+import 'package:client_app/data/Models/login_model/login_model.dart';
+import 'package:client_app/helpers/myApplication.dart';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 
-class CheckPhoneRepo {
-  Future<Check?> checkPhone(String phone) async {
+class LoginRepo {
+  Future<LoginModel?> userLogin({required phone, required password}) async {
     try {
       var response = await http.post(
-        Uri.parse('$baseURL/api/checkPhone'),
-        body: {'phone': phone},
+        Uri.parse('$baseURL/api/login'),
+        body: {'phone': phone, 'password': password},
         headers: headers,
       );
       Map<String, dynamic> responsemap = json.decode(response.body);
@@ -23,10 +25,19 @@ class CheckPhoneRepo {
         if (kDebugMode) {
           print(responsemap);
         }
-        final data = Check.fromJson(response.body);
+        final data = LoginModel.fromJson(responsemap);
+        MyApplication.showToast(
+            text: data.message!, color: ToastColors.success);
+        return data;
+      } else if (response.statusCode == 200 &&
+          responsemap["success"] == false) {
+        final data = LoginModel.fromJson(responsemap);
+        MyApplication.showToast(text: data.message!, color: ToastColors.error);
         return data;
       } else {
-        // MyApplication().showToastMessage(responsemap["message"]);
+        if (kDebugMode) {
+          print(responsemap);
+        }
       }
     } on TimeoutException catch (e) {
       if (kDebugMode) {
@@ -35,6 +46,10 @@ class CheckPhoneRepo {
     } on SocketException catch (e) {
       if (kDebugMode) {
         print('SocketException: ${e.toString()}');
+      }
+    } catch (e) {
+      if (kDebugMode) {
+        print("Exception: ${e.toString()}");
       }
     }
     return null;
