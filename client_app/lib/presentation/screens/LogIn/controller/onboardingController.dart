@@ -2,10 +2,9 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-class OnBoardingController {
+class LogInController {
   ///vars
-  //
-//
+
   ///methods
 
   Widget buildBlur(

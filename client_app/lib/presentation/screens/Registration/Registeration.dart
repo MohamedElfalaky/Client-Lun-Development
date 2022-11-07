@@ -219,14 +219,11 @@ class _RegistrationState extends State<Registration> {
                                       if (kDebugMode) {
                                         print('phone is exist');
                                       }
-                                      showToast(
-                                        text: state.checkPhone!.message!,
-                                        color: ToastColors.success,
-                                      );
-                                      navigateTo(
-                                        context,
-                                        SendOTP(phone: _phone.text),
-                                      );
+                                      MyApplication.showToast(
+                                          text: state.checkPhone!.message!,
+                                          color: ToastColors.success);
+                                      MyApplication.navigateTo(
+                                          SendOTP(phone: _phone.text), context);
                                     } else {
                                       if (kDebugMode) {
                                         print('phone is not exist');

@@ -2,8 +2,6 @@ import 'dart:async';
 
 import 'package:client_app/data/cubits/cubit/check_verfification_cubit.dart';
 import 'package:client_app/helpers/AppLocalizations.dart';
-import 'package:client_app/helpers/myApplication.dart';
-import 'package:client_app/presentation/screens/CreateAccount/CreateAccount.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -195,8 +193,7 @@ class _SendOTPState extends State<SendOTP> {
                                         print('success');
                                       }
                                       showToast(
-                                        text:
-                                            state.checkVerfification!.message!,
+                                        text: 'phone is exist',
                                         color: ToastColors.success,
                                       );
                                       Navigator.of(context).push(

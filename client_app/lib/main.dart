@@ -4,7 +4,7 @@ import 'package:client_app/data/cubits/cubit/check_phone_cubit.dart';
 import 'package:client_app/data/cubits/cubit/check_verfification_cubit.dart';
 import 'package:client_app/helpers/AppLocalizations.dart';
 import 'package:client_app/helpers/CacheHelper.dart';
-import 'package:client_app/presentation/screens/CreateAccount/CreateAccount.dart';
+import 'package:client_app/presentation/screens/LogIn/LogIn.dart';
 import 'package:client_app/presentation/screens/Registration/Registeration.dart';
 import 'package:client_app/presentation/screens/SendOTP/SendOTP.dart';
 import 'package:client_app/presentation/screens/Splash.dart';
@@ -83,9 +83,8 @@ class MyApp extends StatelessWidget {
               '/splash': (context) => const Splash(),
               '/onboarding': (context) => const Splash(),
               '/registration': (context) => const Registration(),
-              '/createAccount': (context) => const CreateAccount(),
             },
-            home: const Splash(),
+            home: const LogIn(),
           );
         },
       ),
