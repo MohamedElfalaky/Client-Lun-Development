@@ -94,5 +94,19 @@
     "phone is exist": "Phone is exist",
     "OTP Verification": "OTP Verification",
     "OTP Message": "You will receive 4 digit code for phone number verification",
-    "Next": "Next"
+    "Next": "Next",
+    "Didn't have code?": "Didn't have code?",
+    "Send again": "Send again",
+    "welcome to": "Welcome To",
+    "talabatkom": "Talabatkom",
+    "agree": "By creating an account you agree ",
+    "privacy policy": "to the privacy policy and to the",
+    "terms of use": "terms of use",
+    "username": "Username",
+    "password": "Password",
+    "confirm password": "Confirm Password",
+    "password hint": "Must be at least 8 numbers",
+    "confirm password hint": "Both password must match",
+    "register": "Register",
+    "type your name": "Type your name"
 }

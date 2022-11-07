@@ -1,8 +1,9 @@
 import 'dart:async';
 
-import 'package:client_app/data/cubits/cubit/check_phone_cubit.dart';
+import 'package:client_app/data/cubits/cubit/check_verfification_cubit.dart';
 import 'package:client_app/helpers/AppLocalizations.dart';
 import 'package:client_app/helpers/myApplication.dart';
+import 'package:client_app/presentation/screens/CreateAccount/CreateAccount.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -11,8 +12,8 @@ import 'package:lottie/lottie.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 class SendOTP extends StatefulWidget {
-  const SendOTP({super.key});
-
+  String? phone;
+  SendOTP({super.key, this.phone});
   @override
   State<SendOTP> createState() => _SendOTPState();
 }
@@ -32,18 +33,18 @@ class _SendOTPState extends State<SendOTP> {
       },
       child: SafeArea(
         child: Scaffold(
+          backgroundColor: Theme.of(context).colorScheme.secondary,
           body: Container(
             width: double.infinity,
-            height: double.infinity,
+            height: MediaQuery.of(context).size.height - 100,
             color: Theme.of(context).colorScheme.secondary,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
               child: ListView(
                 shrinkWrap: true,
-                // reverse: true,
+                reverse: true,
                 // mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  const SizedBox(height: 25),
                   Align(
                     alignment: Alignment.centerLeft,
                     child: SizedBox(
@@ -74,7 +75,7 @@ class _SendOTPState extends State<SendOTP> {
                         'assets/Images/lottie/Verfy_editor_sbg2yvry.json'),
                   ),
                   const SizedBox(
-                    height: 25,
+                    height: 5,
                   ),
                   Align(
                     alignment: Alignment.centerLeft,
@@ -134,10 +135,10 @@ class _SendOTPState extends State<SendOTP> {
                       ),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 16, vertical: 12),
+                            horizontal: 16, vertical: 16),
                         child: Column(
                           // mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                          // crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             PinCodeTextField(
                               backgroundColor: Colors.transparent,
@@ -151,7 +152,7 @@ class _SendOTPState extends State<SendOTP> {
                                 selectedFillColor: Colors.white,
                                 inactiveFillColor: Colors.white,
                                 shape: PinCodeFieldShape.box,
-                                borderRadius: BorderRadius.circular(20),
+                                borderRadius: BorderRadius.circular(10),
                                 fieldHeight: 64,
                                 fieldWidth: 75,
                                 activeFillColor: Colors.white,
@@ -184,22 +185,34 @@ class _SendOTPState extends State<SendOTP> {
                             SizedBox(
                               height: 56,
                               width: 347.8,
-                              child: BlocConsumer<CheckPhoneCubit,
-                                  CheckPhoneState>(
+                              child: BlocConsumer<CheckVerfificationCubit,
+                                  CheckVerfificationState>(
                                 listener: (context, state) {
-                                  if (state is CheckPhoneLoaded) {
-                                    print(state.checkPhone!.message);
-                                    if (state.checkPhone!.success == true) {
+                                  if (state is CheckVerfificationLoaded) {
+                                    if (state.checkVerfification!.success ==
+                                        true) {
                                       if (kDebugMode) {
-                                        print('phone is exist');
+                                        print('success');
                                       }
                                       showToast(
-                                        text: 'phone is exist',
+                                        text:
+                                            state.checkVerfification!.message!,
                                         color: ToastColors.success,
                                       );
-                                    } else {
+                                      Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              const CreateAccount(),
+                                        ),
+                                      );
+                                    }
+                                    if (state.checkVerfification!.success ==
+                                        false) {
                                       if (kDebugMode) {
-                                        print('phone is not exist');
+                                        showToast(
+                                            text: state
+                                                .checkVerfification!.message!,
+                                            color: ToastColors.error);
                                       }
 
                                       // navigateTo(
@@ -213,7 +226,7 @@ class _SendOTPState extends State<SendOTP> {
                                   }
                                 },
                                 builder: (context, state) {
-                                  if (state is CheckPhoneLoading) {
+                                  if (state is CheckVerfificationLoading) {
                                     return const Center(
                                       child: CircularProgressIndicator(),
                                     );
@@ -227,9 +240,10 @@ class _SendOTPState extends State<SendOTP> {
                                       ),
                                     ),
                                     onPressed: () {
-                                      // context
-                                      //     .read<CheckPhoneCubit>()
-                                      //     .checkPhone(_phone.text);
+                                      context
+                                          .read<CheckVerfificationCubit>()
+                                          .checkVerfification(
+                                              widget.phone ?? "", currentText);
                                     },
                                     child: Text(
                                       'Next'.tr(context),
@@ -249,16 +263,21 @@ class _SendOTPState extends State<SendOTP> {
                             // const SizedBox(
                             //   height: 10,
                             // ),
-                            LottieBuilder.asset(
-                              'assets/Images/lottie/Loading.json',
-                              // height: 200,
-                              // width: 200,
+                            SizedBox(
+                              width: 347.8,
+                              height: 100,
+                              child: LottieBuilder.asset(
+                                'assets/Images/lottie/Loading.json',
+                                // fit: BoxFit.scaleDown,
+                                // height: 100,
+                                // width: 200,
+                              ),
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  'alreadyHaveAccount'.tr(context),
+                                  "Didn't have code?".tr(context),
                                   textAlign: TextAlign.left,
                                   style: TextStyle(
                                     color: Theme.of(context).hintColor,
@@ -277,7 +296,7 @@ class _SendOTPState extends State<SendOTP> {
                                     // );
                                   },
                                   child: Text(
-                                    'Login'.tr(context),
+                                    "Send again".tr(context),
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
                                       color: Theme.of(context).primaryColor,
@@ -295,7 +314,8 @@ class _SendOTPState extends State<SendOTP> {
                       ),
                     ),
                   ),
-                ],
+                  // const Spacer(),
+                ].reversed.toList(),
               ),
             ),
           ),

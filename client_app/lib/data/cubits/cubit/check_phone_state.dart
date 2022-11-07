@@ -9,7 +9,7 @@ class CheckPhoneError extends CheckPhoneState {
 class CheckPhoneInitial extends CheckPhoneState {}
 
 class CheckPhoneLoaded extends CheckPhoneState {
-  final Check? checkPhone;
+  final CheckPhone? checkPhone;
 
   CheckPhoneLoaded({this.checkPhone});
 }

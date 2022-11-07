@@ -2,19 +2,21 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:client_app/data/Models/CheckPhone/check_phone.dart';
+import 'package:client_app/app/constants.dart';
+import 'package:client_app/data/Models/CheckVerfication/check.verification.dart';
 import 'package:client_app/data/endpoints.dart';
 import 'package:client_app/helpers/myApplication.dart';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 
-class CheckPhoneRepo {
-  Future<CheckPhone?> checkPhone(String phone) async {
+class CheckVerificationRepo {
+  Future<Check?> checkVerification(
+      String verificationCode, String phone) async {
     try {
       var response = await http.post(
-        Uri.parse('$baseURL/api/checkPhone'),
-        body: {'phone': phone},
-        // headers: headers,
+        Uri.parse('$baseURL/api/checkVerification'),
+        body: {'code': verificationCode, 'phone': phone},
+        headers: headers,
       );
       Map<String, dynamic> responsemap = json.decode(response.body);
       if (kDebugMode) {
@@ -24,9 +26,7 @@ class CheckPhoneRepo {
         if (kDebugMode) {
           print(responsemap);
         }
-        final data = CheckPhone.fromJson(responsemap);
-        MyApplication().showToastMessage(
-            text: responsemap["message"], color: ToastColors.success);
+        final data = Check.fromJson(response.body);
         return data;
       } else {
         MyApplication().showToastMessage(
@@ -40,14 +40,7 @@ class CheckPhoneRepo {
       if (kDebugMode) {
         print('SocketException: ${e.toString()}');
       }
-    } catch (e) {
-      if (kDebugMode) {
-        print('Exception: ${e.toString()}');
-      }
     }
     return null;
-
-    // return null;
-    // return null;
   }
 }

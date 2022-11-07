@@ -94,5 +94,20 @@
     "phone is exist": "رقم الهاتف موجود بالفعل",
     "OTP Verification": "التحقق من OTP",
     "OTP Message": "سوف تتلقى رمزًا مكونًا من 4 أرقام للتحقق من رقم الهاتف",
-    "Next": "التالي"
+    "Next": "التالي",
+    "Didn't have code?": "لم تتلق رمز؟",
+    "Send again": "ارسال مرة اخرى",
+    "welcome to": "مرحبا بك في",
+    "talabatkom": "طلباتكم",
+    "agree": "بإنشاء حساب فإنك توافق على",
+    "privacy policy": " سياسة الخصوصية و",
+    "terms of use": "شروط الاستخدام",
+    "username": "اسم المستخدم",
+    "password": "كلمة المرور",
+    "login": "تسجيل الدخول",
+    "confirm password": "تأكيد كلمة المرور",
+    "password hint": "يجب أن يكون على الأقل 8 أرقام",
+    "confirm password hint": "يجب أن تتطابق كلتا كلمة المرور",
+    "register": "تسجيل",
+    "type your name": "اكتب اسمك"
 }

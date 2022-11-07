@@ -1,13 +1,12 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
-import '../../app/keys.dart';
+
 import 'package:client_app/data/Models/AboutUsModel/AboutUsModel.dart';
 import 'package:http/http.dart' as http;
-import '../../app/constants.dart';
-import '../../helpers/myApplication.dart';
 
-import '../../../app/global.dart';
+import '../../app/constants.dart';
+import '../../app/keys.dart';
 
 class AboutUsRepo {
   Future<AboutUsModel?> getAboutUs() async {
@@ -26,10 +25,11 @@ class AboutUsRepo {
         //   final data = AboutUsModel.fromJson(jsonDecode(response.body));
         //   return data;
       } else {
-        MyApplication().showToastMessage(responsemap["message"]);
+        // MyApplication().showToastMessage(responsemap["message"]);
       }
-    } on TimeoutException catch (e) {
-    } on SocketException catch (e) {
-    } on Error catch (e) {}
+    } on TimeoutException {
+    } on SocketException {
+    } on Error {}
+    return null;
   }
 }

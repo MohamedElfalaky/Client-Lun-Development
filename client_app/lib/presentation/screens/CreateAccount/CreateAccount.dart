@@ -8,15 +8,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class Registration extends StatefulWidget {
-  const Registration({
+class CreateAccount extends StatefulWidget {
+  const CreateAccount({
     super.key,
   });
   @override
-  State<Registration> createState() => _RegistrationState();
+  State<CreateAccount> createState() => _CreateAccountState();
 }
 
-class _RegistrationState extends State<Registration> {
+class _CreateAccountState extends State<CreateAccount> {
   final TextEditingController _phone = TextEditingController();
   late String flagNumber = '+966';
 
@@ -76,52 +76,91 @@ class _RegistrationState extends State<Registration> {
                   ),
                   Align(
                     alignment: Alignment.centerLeft,
-                    child: SizedBox(
-                      width: 240,
-                      height: 43,
-                      child: Text(
-                        'create account'.tr(context),
-                        textAlign: TextAlign.left,
-                        style: TextStyle(
-                            color: Theme.of(context).textTheme.headline5!.color,
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold,
-                            letterSpacing: 2.1),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 8.0),
-                    child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: SizedBox(
-                        width: 330,
-                        height: 48,
-                        child: Text(
-                          "phoneOTP".tr(context),
+                    child: Row(
+                      children: [
+                        Text(
+                          'welcome to'.tr(context),
                           textAlign: TextAlign.left,
                           style: TextStyle(
-                            color: Theme.of(context).hintColor,
-                            fontSize: 16,
-                            // fontWeight: FontWeight.w500,
-                            letterSpacing: 0.8,
-                            height: 1.5,
-                          ),
+                              color:
+                                  Theme.of(context).textTheme.headline5!.color,
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                              letterSpacing: 2.1),
                         ),
+                        Text(
+                          'talabatkom'.tr(context),
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                              color: Theme.of(context).primaryColor,
+                              fontSize: 30,
+                              fontWeight: FontWeight.bold,
+                              letterSpacing: 2.1),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      left: 8.0,
+                    ),
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            'agree'.tr(context),
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                              color: Theme.of(context).hintColor,
+                              fontSize: 16,
+                              // fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                'privacy policy'.tr(context),
+                                textAlign: TextAlign.left,
+                                style: TextStyle(
+                                  color: Theme.of(context).hintColor,
+                                  fontSize: 16,
+                                  height: -.5,
+                                ),
+                              ),
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                                child: Text(
+                                  'terms of use'.tr(context),
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(
+                                    color: Theme.of(context).primaryColor,
+                                    fontSize: 16,
+                                    height: -.5,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
                     ),
                   ),
                   const SizedBox(
-                    height: 20,
+                    height: 15,
                   ),
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Container(
                       width: 380,
-                      height: 325,
+                      height: 425,
                       decoration: BoxDecoration(
                         color: Theme.of(context).colorScheme.secondary,
                         borderRadius: BorderRadius.circular(30),
@@ -141,15 +180,21 @@ class _RegistrationState extends State<Registration> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'phoneNumber'.tr(context),
+                              'username'.tr(context),
                               textAlign: TextAlign.left,
                               style: TextStyle(
-                                color: Theme.of(context).hintColor,
+                                color: Theme.of(context)
+                                    .textTheme
+                                    .headline5!
+                                    .color,
                                 fontSize: 16,
                                 // fontWeight: FontWeight.w500,
                                 // letterSpacing: 0.8,
-                                height: 3,
+                                height: 2,
                               ),
+                            ),
+                            const SizedBox(
+                              height: 2,
                             ),
                             defaultTextField(
                               width: 348,
@@ -157,56 +202,102 @@ class _RegistrationState extends State<Registration> {
                               // color: const Color(0xffF2F2F2),
                               cursorColor: Theme.of(context).hintColor,
                               textSize: 16,
-                              hint: 'Phone'.tr(context),
+                              hint: 'type your name'.tr(context),
                               radius: 20,
                               borderColor: Colors.white,
                               // label: "Phone",
                               controller: _phone,
                               type: TextInputType.phone,
                               isBorder: true,
-                              prefix: Padding(
-                                padding: const EdgeInsets.all(2),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: Theme.of(context)
-                                        .hintColor
-                                        .withOpacity(0.2),
-                                    // borderRadius: BorderRadius.circular(20),
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(12),
-                                    child: DropdownButton(
-                                      underline: Container(),
-                                      iconSize: 24,
-                                      value: '+966',
-                                      items: [
-                                        DropdownMenuItem(
-                                          value: '+966',
-                                          child: Image.asset(
-                                            'icons/flags/png/sa.png',
-                                            // color: Colors.green.withOpacity(0.2),
-                                            // width: 24,
-                                            // height: 24,
-                                            package: 'country_icons',
-                                          ),
-                                        ),
-                                      ],
-                                      onChanged: (value) {
-                                        setState(() {
-                                          print(value);
-
-                                          flagNumber = value.toString();
-                                          print(flagNumber);
-                                        });
-                                      },
-                                    ),
-                                  ),
-                                ),
+                            ),
+                            Text(
+                              'password'.tr(context),
+                              textAlign: TextAlign.left,
+                              style: TextStyle(
+                                color: Theme.of(context)
+                                    .textTheme
+                                    .headline5!
+                                    .color,
+                                fontSize: 16,
+                                // fontWeight: FontWeight.w500,
+                                // letterSpacing: 0.8,
+                                height: 3,
                               ),
                             ),
                             const SizedBox(
-                              height: 45,
+                              height: 2,
                             ),
+                            defaultTextField(
+                              width: 348,
+                              height: 48,
+                              // color: const Color(0xffF2F2F2),
+                              cursorColor: Theme.of(context).hintColor,
+                              textSize: 16,
+                              // hint: 'type your name'.tr(context),
+                              label: 'password'.tr(context),
+                              radius: 20,
+                              borderColor: Colors.white,
+                              // label: "Phone",
+                              controller: _phone,
+                              type: TextInputType.phone,
+                              isBorder: true,
+                            ),
+                            Text(
+                              'password hint'.tr(context),
+                              style: TextStyle(
+                                  height: 2,
+                                  fontSize: 12,
+                                  color: Theme.of(context)
+                                      .textTheme
+                                      .headline5!
+                                      .color),
+                            ),
+                            const SizedBox(
+                              height: 1,
+                            ),
+                            Text(
+                              'confirm password'.tr(context),
+                              textAlign: TextAlign.left,
+                              style: TextStyle(
+                                color: Theme.of(context)
+                                    .textTheme
+                                    .headline5!
+                                    .color,
+                                fontSize: 16,
+                                // fontWeight: FontWeight.w500,
+                                // letterSpacing: 0.8,
+                                height: 2,
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 2,
+                            ),
+                            defaultTextField(
+                              width: 348,
+                              height: 48,
+                              // color: const Color(0xffF2F2F2),
+                              cursorColor: Theme.of(context).hintColor,
+                              textSize: 16,
+                              // hint: 'type your name'.tr(context),
+                              label: 'confirm password'.tr(context),
+                              radius: 20,
+                              borderColor: Colors.white,
+                              // label: "Phone",
+                              controller: _phone,
+                              type: TextInputType.phone,
+                              isBorder: true,
+                            ),
+                            Text(
+                              'confirm password hint'.tr(context),
+                              style: TextStyle(
+                                  height: 2,
+                                  fontSize: 12,
+                                  color: Theme.of(context)
+                                      .textTheme
+                                      .headline5!
+                                      .color),
+                            ),
+                            const Spacer(),
                             SizedBox(
                               height: 56,
                               width: 347.8,
@@ -263,7 +354,7 @@ class _RegistrationState extends State<Registration> {
                                           .checkPhone(_phone.text);
                                     },
                                     child: Text(
-                                      'Next'.tr(context),
+                                      'register'.tr(context),
                                       style: TextStyle(
                                         fontSize: 20,
                                         color: Theme.of(context)
@@ -276,46 +367,6 @@ class _RegistrationState extends State<Registration> {
                                   );
                                 },
                               ),
-                            ),
-                            const SizedBox(
-                              height: 20,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  'alreadyHaveAccount'.tr(context),
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                    color: Theme.of(context).hintColor,
-                                    fontSize: 16,
-                                    // fontWeight: FontWeight.w500,
-                                    // letterSpacing: 0.8,
-                                    height: 1.5,
-                                  ),
-                                ),
-                                TextButton(
-                                  onPressed: () {
-                                    Navigator.of(context).push(
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            const Registration(),
-                                      ),
-                                    );
-                                  },
-                                  child: Text(
-                                    'Login'.tr(context),
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(
-                                      color: Theme.of(context).primaryColor,
-                                      fontSize: 20,
-                                      // fontWeight: FontWeight.w500,
-                                      // letterSpacing: 0.8,
-                                      height: 1.5,
-                                    ),
-                                  ),
-                                ),
-                              ],
                             ),
                           ],
                         ),

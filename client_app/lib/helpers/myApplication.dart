@@ -69,7 +69,19 @@ class MyApplication {
         .pushReplacement(MaterialPageRoute(builder: ((context) => page)));
   }
 
-  showToastMessage(String message) {}
+  showToastMessage({
+    required String text,
+    required ToastColors color,
+  }) {
+    Fluttertoast.showToast(
+      msg: text,
+      toastLength: Toast.LENGTH_SHORT,
+      gravity: ToastGravity.BOTTOM,
+      backgroundColor: setToastColor(color),
+      textColor: Colors.white,
+      fontSize: 16,
+    );
+  }
 }
 
 enum ToastColors {
