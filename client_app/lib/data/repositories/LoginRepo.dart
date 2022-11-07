@@ -1,9 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
-
 import 'package:client_app/app/constants.dart';
-import 'package:client_app/data/Models/CheckPhone/check.phone.dart';
 import 'package:client_app/data/Models/login_model/login_model.dart';
 import 'package:client_app/helpers/myApplication.dart';
 import 'package:flutter/foundation.dart';
