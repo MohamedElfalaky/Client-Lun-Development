@@ -2,7 +2,7 @@ import 'package:client_app/data/cubits/cubit/check_phone_cubit.dart';
 import 'package:client_app/helpers/AppLocalizations.dart';
 import 'package:client_app/helpers/myApplication.dart';
 import 'package:client_app/presentation/screens/SendOTP/SendOTP.dart';
-import 'package:client_app/presentation/shared/shared.dart';
+import 'package:client_app/presentation/widgets/shared.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
