@@ -29,7 +29,7 @@ class CheckVerificationRepo {
         final data = Check.fromJson(response.body);
         return data;
       } else {
-        MyApplication().showToastMessage(
+        MyApplication.showToast(
             text: responsemap["message"], color: ToastColors.error);
       }
     } on TimeoutException catch (e) {

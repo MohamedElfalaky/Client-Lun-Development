@@ -25,11 +25,11 @@ class CheckPhoneRepo {
           print(responsemap);
         }
         final data = CheckPhone.fromJson(responsemap);
-        MyApplication().showToastMessage(
+        MyApplication.showToast(
             text: responsemap["message"], color: ToastColors.success);
         return data;
       } else {
-        MyApplication().showToastMessage(
+        MyApplication.showToast(
             text: responsemap["message"], color: ToastColors.error);
       }
     } on TimeoutException catch (e) {

@@ -6,6 +6,7 @@ import 'package:client_app/presentation/shared/shared.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_styled_toast/flutter_styled_toast.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class CreateAccount extends StatefulWidget {
@@ -311,12 +312,11 @@ class _CreateAccountState extends State<CreateAccount> {
                                         print('phone is exist');
                                       }
                                       showToast(
-                                        text: state.checkPhone!.message!,
-                                        color: ToastColors.success,
+                                        state.checkPhone!.message!,
                                       );
-                                      navigateTo(
-                                        context,
+                                      MyApplication.navigateTo(
                                         SendOTP(phone: _phone.text),
+                                        context,
                                       );
                                     } else {
                                       if (kDebugMode) {
