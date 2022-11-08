@@ -1,13 +1,18 @@
 import 'package:client_app/app/theme.dart';
 import 'package:client_app/data/cubits/Local/local_cubit.dart';
 import 'package:client_app/data/cubits/Login_cubit/login_cubit.dart';
+import 'package:client_app/data/cubits/NewPassWord/new_pass_word_cubit_cubit.dart';
+import 'package:client_app/data/cubits/ResetPassWord/reset_password_cubit.dart';
 import 'package:client_app/data/cubits/cubit/check_phone_cubit.dart';
 import 'package:client_app/data/cubits/cubit/check_verfification_cubit.dart';
 import 'package:client_app/data/cubits/debug/app_bloc_observer.dart';
 import 'package:client_app/helpers/AppLocalizations.dart';
 import 'package:client_app/helpers/CacheHelper.dart';
+import 'package:client_app/presentation/screens/CreateAccount/CreateAccount.dart';
+import 'package:client_app/presentation/screens/NewPassword/NewPassword.dart';
 import 'package:client_app/presentation/screens/OnboardingScreen/OnBoarding.dart';
 import 'package:client_app/presentation/screens/Registration/Registeration.dart';
+import 'package:client_app/presentation/screens/ResetPassword/ResetPassword.dart';
 import 'package:client_app/presentation/screens/SendOTP/SendOTP.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,7 +26,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = MyBlocObserver();
   await CacheHelper.init();
-  // CacheHelper.saveBoolToShared("showHome", false); // بمسح الكاش بتاع الاونبوردنج
+  CacheHelper.saveBoolToShared(
+      "showHome", false); // بمسح الكاش بتاع الاونبوردنج
   runApp(const MyApp());
 }
 
@@ -47,6 +53,9 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
         BlocProvider<CheckVerfificationCubit>(
             create: (context) => CheckVerfificationCubit()),
         BlocProvider<LoginCubit>(create: (context) => LoginCubit()),
+        BlocProvider<NewPassWordCubit>(create: (context) => NewPassWordCubit()),
+        BlocProvider<ResetPasswordCubit>(
+            create: (context) => ResetPasswordCubit()),
       ],
       child: BlocBuilder<LocalCubit, LocalState>(
         builder: (context, state) {
@@ -91,14 +100,13 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
               '/onboarding': (context) => const OnBoarding(),
               '/registration': (context) => const Registration(),
             },
-            home: const Splash(),
+            home: Splash(),
           );
         },
       ),
     );
   }
 
-  // This widget is the root of your application.
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);

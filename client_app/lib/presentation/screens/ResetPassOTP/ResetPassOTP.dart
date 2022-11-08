@@ -13,14 +13,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
-class SendOTP extends StatefulWidget {
+class ResetPassOTP extends StatefulWidget {
   String? phone;
-  SendOTP({super.key, this.phone});
+  ResetPassOTP({super.key, this.phone});
   @override
-  State<SendOTP> createState() => _SendOTPState();
+  State<ResetPassOTP> createState() => _ResetPassOTPState();
 }
 
-class _SendOTPState extends State<SendOTP> {
+class _ResetPassOTPState extends State<ResetPassOTP> {
   StreamController<ErrorAnimationType> errorController =
       StreamController<ErrorAnimationType>();
   TextEditingController textEditingController = TextEditingController();
@@ -200,12 +200,11 @@ class _SendOTPState extends State<SendOTP> {
                                         text: 'phone is exist',
                                         color: ToastColors.success,
                                       );
-                                      Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              const CreateAccount(),
-                                        ),
-                                      );
+                                      MyApplication.navigateToReplace(
+                                          NewPassword(
+                                            phone: widget.phone,
+                                          ),
+                                          context);
                                     }
                                     if (state.checkVerfification!.success ==
                                         false) {

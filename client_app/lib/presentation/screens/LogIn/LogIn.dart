@@ -1,12 +1,8 @@
 import 'package:client_app/data/cubits/Login_cubit/login_cubit.dart';
 import 'package:client_app/helpers/myApplication.dart';
 import 'package:client_app/presentation/screens/LogIn/components/Buttons.dart';
-import 'package:client_app/presentation/screens/LogIn/components/CountryPickerContainer.dart';
 import 'package:client_app/presentation/screens/LogIn/components/PhoneTextField.dart';
 import 'package:client_app/presentation/screens/LogIn/components/PasswordTextField.dart';
-import 'package:client_app/presentation/widgets/MyButton.dart';
-import 'package:client_app/presentation/widgets/myFormTextField.dart';
-import 'package:client_app/presentation/widgets/shared.dart';
 import 'package:client_app/style/icons.dart';
 import 'package:fl_country_code_picker/fl_country_code_picker.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +16,6 @@ class LogIn extends StatefulWidget {
   State<LogIn> createState() => _LogInState();
 }
 
-final _formKey = GlobalKey<FormState>();
 const countryPicker = FlCountryCodePicker();
 final phoneText = TextEditingController();
 final passwordText = TextEditingController();
@@ -28,6 +23,8 @@ final passwordText = TextEditingController();
 CountryCode? countryCode;
 
 class _LogInState extends State<LogIn> {
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Container(

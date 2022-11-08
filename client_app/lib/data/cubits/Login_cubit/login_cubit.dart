@@ -36,6 +36,6 @@ class LoginCubit extends Cubit<LoginState> {
     isHiddenPass
         ? securityIcon = Icon(Icons.visibility_off)
         : securityIcon = Icon(Icons.visibility);
-    emit(PasswordShown());
+    emit(PasswordShowen());
   }
 }
