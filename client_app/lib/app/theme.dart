@@ -204,13 +204,13 @@ final ThemeData myTheme = ThemeData(
       fontStyle: FontStyle.normal,
     ),
     bodyText1: TextStyle(
-      color: Color(0xffffffff),
+      // color: Color(0xffffffff),
       fontSize: null,
       fontWeight: FontWeight.w400,
       fontStyle: FontStyle.normal,
     ),
     bodyText2: TextStyle(
-      color: Color(0xffffffff),
+      // color: Color(0xffffffff),
       fontSize: null,
       fontWeight: FontWeight.w400,
       fontStyle: FontStyle.normal,
