@@ -10,6 +10,7 @@ String rateOrder = "${svgExtension}rating (1).svg";
 String reOrder = "${svgExtension}return.svg";
 String tablee = "${svgExtension}table.svg";
 String startss = "${svgExtension}stars.svg";
+String balance = "${svgExtension}Mask Group 190.svg";
 
 // Lottie
 String lottieExtension = "assets/Images/lottie/";
@@ -19,3 +20,10 @@ String forgetPass = "${lottieExtension}82078-confusion.json";
 String pngExtension = "assets/Images/png/";
 String loginBackground = "${pngExtension}evan-wise-D99y38Na5Xo-unsplash.png";
 String clockk = "${pngExtension}Clock.png";
+
+// NetWork
+
+String noReturant =
+    "https://png.pngitem.com/pimgs/s/201-2011783_png-restaurant-transparent-png.png";
+String noReturantCover =
+    "https://c4.wallpaperflare.com/wallpaper/197/854/431/fire-burger-5k-steak-wallpaper-preview.jpg";

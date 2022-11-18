@@ -7,9 +7,10 @@ import 'package:flutter_svg/svg.dart';
 import 'package:sizer/sizer.dart';
 
 class FeatureOne extends StatelessWidget {
-  // final String name;
-  // final String svg;
-  // FeatureOne(this.name, this.svg);
+  final String? name;
+  final String? pic;
+  final String? cvr;
+  FeatureOne({this.name, this.pic, this.cvr});
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +41,7 @@ class FeatureOne extends StatelessWidget {
                           topLeft: Radius.circular(20.sp),
                           topRight: Radius.circular(20.sp)),
                       child: Image.network(
-                        "https://c4.wallpaperflare.com/wallpaper/197/854/431/fire-burger-5k-steak-wallpaper-preview.jpg",
+                        cvr!,
                       ),
                     ),
                     fit: BoxFit.fill,
@@ -62,7 +63,7 @@ class FeatureOne extends StatelessWidget {
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(8.sp),
                                 child: Image.network(
-                                  ("https://www.dawri.news/wp-content/uploads/2020/12/IMG_20201204_030414-1200x979.jpg"),
+                                  (pic!),
                                   fit: BoxFit.cover,
                                 ),
                               ),
@@ -75,7 +76,7 @@ class FeatureOne extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  "Buffalo Burger",
+                                  name!,
                                   style: TextStyle(color: Colors.black),
                                 ),
                                 Row(

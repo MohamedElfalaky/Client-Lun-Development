@@ -4,11 +4,10 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:client_app/app/global.dart';
 import 'package:client_app/data/cubits/LastOrders/LastOrders_cubit.dart';
 import 'package:client_app/data/cubits/NearbyCubit/NearbyCubit.dart';
+import 'package:client_app/data/cubits/PopularCubit/PopularCubit.dart';
 import 'package:client_app/helpers/CacheHelper.dart';
 import 'package:client_app/helpers/myApplication.dart';
-import 'package:client_app/presentation/screens/Home/components/BestAdsItem.dart';
 import 'package:client_app/presentation/screens/Home/components/FeatureOne.dart';
-import 'package:client_app/presentation/screens/Home/components/HomeAppBar.dart';
 import 'package:client_app/presentation/screens/Home/components/LastOrder.dart';
 import 'package:client_app/presentation/screens/Home/components/NearbyOrder.dart';
 import 'package:client_app/presentation/screens/Home/components/Wallet.dart';
@@ -27,7 +26,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  HomeController _homeController = HomeController();
+  final HomeController _homeController = HomeController();
 
   @override
   Widget build(BuildContext context) {
@@ -182,7 +181,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 .market
                                                 ?.media![1]
                                                 .thumb
-                                            : "no media",
+                                            : noReturant,
                                       );
                                     })
                                 : Center(
@@ -229,18 +228,29 @@ class _HomeScreenState extends State<HomeScreen> {
                     BlocBuilder<NearbyCubit, NearbyState>(
                       builder: (context, state) {
                         return Container(
-                            // width: 400,
-                            height: MyApplication.hightClc(context, 143),
-                            // height: MyApplication.hightClc(context, 460),
+                            // height: MyApplication.hightClc(context, 143),
                             child: state is NearbySuccess
                                 ? ListView.builder(
+                                    shrinkWrap: true,
                                     itemCount: state.myNearbyModel.data!.length,
                                     itemBuilder: (context, index) =>
                                         NearbyOrder(
                                             name: state.myNearbyModel
                                                 .data?[index].name,
-                                            pic: ""),
-                                  )
+                                            pic: state
+                                                        .myNearbyModel
+                                                        .data![index]
+                                                        .hasMedia ==
+                                                    true
+                                                ? state.myNearbyModel
+                                                    .data![index].media!
+                                                    .where((element) =>
+                                                        element
+                                                            .collectionName ==
+                                                        'avatar')
+                                                    .first
+                                                    .thumb
+                                                : noReturant))
                                 : Center(
                                     child: CircularProgressIndicator(),
                                   ));
@@ -265,17 +275,48 @@ class _HomeScreenState extends State<HomeScreen> {
                     SizedBox(
                       height: MyApplication.hightClc(context, 20),
                     ),
-                    Container(
-                        width: double.infinity,
-                        child: SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(children: [
-                            FeatureOne(),
-                            FeatureOne(),
-                            FeatureOne(),
-                            FeatureOne(),
-                          ]),
-                        )),
+                    BlocBuilder<PopularCubit, PopularState>(
+                      builder: (context, state) {
+                        return Container(
+                            height: MyApplication.hightClc(context, 250),
+                            width: double.infinity,
+                            child: state is PopularSuccess
+                                ? ListView.builder(
+                                    shrinkWrap: true,
+                                    scrollDirection: Axis.horizontal,
+                                    itemCount:
+                                        state.myPopularModel.data!.length,
+                                    itemBuilder: (context, index) => FeatureOne(
+                                          name: state
+                                              .myPopularModel.data![index].name,
+                                          pic: state.myPopularModel.data?[index]
+                                                      .hasMedia ==
+                                                  true
+                                              ? state.myPopularModel
+                                                  .data![index].media!
+                                                  .where((element) =>
+                                                      element.collectionName ==
+                                                      'avatar')
+                                                  .first
+                                                  .thumb
+                                              : noReturant,
+                                          cvr: state.myPopularModel.data?[index]
+                                                      .hasMedia ==
+                                                  true
+                                              ? state.myPopularModel
+                                                  .data![index].media!
+                                                  .where((element) =>
+                                                      element.collectionName ==
+                                                      'cover')
+                                                  .first
+                                                  .thumb
+                                              : noReturantCover,
+                                        ))
+                                : Center(
+                                    child: CircularProgressIndicator(),
+                                  ));
+                      },
+                    ),
                     SizedBox(
                       height: MyApplication.hightClc(context, 20),
                     ),

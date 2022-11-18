@@ -1,10 +1,13 @@
 import 'package:client_app/app/theme.dart';
+import 'package:client_app/data/cubits/BalanceCubit/BalanceCubit.dart';
 import 'package:client_app/data/cubits/LastOrders/LastOrders_cubit.dart';
 import 'package:client_app/data/cubits/Local/local_cubit.dart';
 import 'package:client_app/data/cubits/Login_cubit/login_cubit.dart';
 import 'package:client_app/data/cubits/NearbyCubit/NearbyCubit.dart';
 import 'package:client_app/data/cubits/NewPassWord/new_pass_word_cubit_cubit.dart';
+import 'package:client_app/data/cubits/PopularCubit/PopularCubit.dart';
 import 'package:client_app/data/cubits/ResetPassWord/reset_password_cubit.dart';
+import 'package:client_app/data/cubits/SearchCubit/SearchCubit.dart';
 import 'package:client_app/data/cubits/cubit/check_phone_cubit.dart';
 import 'package:client_app/data/cubits/cubit/check_verfification_cubit.dart';
 import 'package:client_app/data/cubits/debug/app_bloc_observer.dart';
@@ -15,6 +18,7 @@ import 'package:client_app/presentation/screens/Home/components/DeliveryPickupAl
 import 'package:client_app/presentation/screens/LogIn/LogIn.dart';
 import 'package:client_app/presentation/screens/OnboardingScreen/OnBoarding.dart';
 import 'package:client_app/presentation/screens/Registration/Registeration.dart';
+import 'package:client_app/presentation/screens/Search/Search.dart';
 import 'package:client_app/presentation/screens/SendOTP/SendOTP.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -62,6 +66,9 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
             create: (context) => ResetPasswordCubit()),
         BlocProvider<LastOrdersCubit>(create: (context) => LastOrdersCubit()),
         BlocProvider<NearbyCubit>(create: (context) => NearbyCubit()),
+        BlocProvider<PopularCubit>(create: (context) => PopularCubit()),
+        BlocProvider<BalanceCubit>(create: (context) => BalanceCubit()),
+        BlocProvider<SearchCubit>(create: (context) => SearchCubit()),
       ],
       child: BlocBuilder<LocalCubit, LocalState>(
         builder: (context, state) {

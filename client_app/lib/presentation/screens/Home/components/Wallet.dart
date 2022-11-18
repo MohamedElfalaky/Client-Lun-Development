@@ -1,6 +1,10 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:client_app/data/cubits/BalanceCubit/BalanceCubit.dart';
 import 'package:client_app/helpers/myApplication.dart';
+import 'package:client_app/style/icons.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:sizer/sizer.dart';
 
 class Wallet extends StatelessWidget {
@@ -26,16 +30,12 @@ class Wallet extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.all(8.0.sp),
         child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SizedBox(
                 height: MyApplication.hightClc(context, 40),
-                width: MyApplication.widthClc(context, 40),
-                child: Icon(
-                  Icons.attach_money,
-                  size: 40.sp,
-                  color: Color.fromARGB(255, 223, 202, 8),
-                )
+                width: MyApplication.widthClc(context, 80),
+                child: SvgPicture.asset(balance)
 
                 // SvgPicture.asset(locationIcon)
                 ),
@@ -58,14 +58,24 @@ class Wallet extends StatelessWidget {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    const AutoSizeText(
-                      "457.00",
-                      style: TextStyle(
-                        fontSize: 28,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: "Tajawal",
-                        color: Color(0xFFF2F5F7),
-                      ),
+                    BlocBuilder<BalanceCubit, BalanceState>(
+                      builder: (context, state) {
+                        return state is BalanceSuccess
+                            ? AutoSizeText(
+                                state.myBalanceModel.data!.balance.toString(),
+                                style: TextStyle(
+                                  fontSize: 28,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: "Tajawal",
+                                  color: Color(0xFFF2F5F7),
+                                ),
+                              )
+                            : Center(
+                                child: CircularProgressIndicator(
+                                  color: Colors.white,
+                                ),
+                              );
+                      },
                     ),
                     SizedBox(
                       width: MyApplication.widthClc(context, 8),

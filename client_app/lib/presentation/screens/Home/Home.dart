@@ -10,6 +10,7 @@ import 'package:client_app/presentation/screens/Home/components/DeliveryPickupAl
 import 'package:client_app/presentation/screens/Home/controller/HomeController.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:location/location.dart';
 
 import '../../../app/global.dart';
 
@@ -36,37 +37,10 @@ class _HomeState extends State<Home> {
     // );
   }
 
+// حتة اسنك اويت عنب
   void initState() {
     super.initState();
-    myGetLocation();
-    SchedulerBinding.instance.addPostFrameCallback((_) {
-      CacheHelper.removeFromShared(
-          "isDailogFirstAppearance"); // بمسح ظهور الدايالوج من الكاش
-
-      //////
-
-      //SchedulerBinding بتاكد ان الكونتكست اتبنى //
-      // you have access to context in initState as others said. The only problem here in initState build function is not executed yet. So this context is kind of empty.To solve this, you can use SchedulerBinding://
-      if (_homeController.isDailogFirstAppearance == null) {
-        // عشان تظهر اول مره بس
-        showDialog(
-          barrierDismissible: false, //prevent alert to pop up on click outside
-          context: context,
-          builder: (BuildContext myContext) {
-            return WillPopScope(
-                child: DeliveryPickupAlert(),
-                onWillPop: () => Future.value(
-                    false)); //prevent alert to pop up on back button click
-          },
-        );
-        CacheHelper.saveBoolToShared("isDailogFirstAppearance", true);
-      } else {
-        _homeController.homeAPIs(
-            context, lat, long, _homeController.groupValue);
-      }
-    });
-
-    // _showDialog(); //   اظهر الديالوج بعد ٥ ثواني بعد ما الكونتكست في الinitstate يكون اتبني
+    asyncronaceInsideInit();
   }
 
   @override
@@ -106,7 +80,7 @@ class _HomeState extends State<Home> {
     );
   }
 
-  void myGetLocation() async {
+  Future<LocationData> myGetLocation() async {
     final service = LocationService();
     final locationData = await service.getLocation();
 
@@ -121,5 +95,41 @@ class _HomeState extends State<Home> {
         wholeLocation = "${country},${area},${street}";
       });
     }
+    return locationData!;
+  }
+
+  void asyncronaceInsideInit() async {
+    myGetLocation();
+    LocationData longLat = await myGetLocation();
+    // Future.delayed(Duration(milliseconds: 100)).then((value) => null);
+
+    SchedulerBinding.instance.addPostFrameCallback((_) {
+      CacheHelper.removeFromShared(
+          "isDailogFirstAppearance"); // بمسح ظهور الدايالوج من الكاش
+
+      //////
+
+      //SchedulerBinding بتاكد ان الكونتكست اتبنى //
+      // you have access to context in initState as others said. The only problem here in initState build function is not executed yet. So this context is kind of empty.To solve this, you can use SchedulerBinding://
+      if (_homeController.isDailogFirstAppearance == null) {
+        // عشان تظهر اول مره بس
+        showDialog(
+          barrierDismissible: false, //prevent alert to pop up on click outside
+          context: context,
+          builder: (BuildContext myContext) {
+            return WillPopScope(
+                child: DeliveryPickupAlert(),
+                onWillPop: () => Future.value(
+                    false)); //prevent alert to pop up on back button click
+          },
+        );
+        CacheHelper.saveBoolToShared("isDailogFirstAppearance", true);
+      } else {
+        _homeController.homeAPIs(context, longLat.latitude!.toStringAsFixed(2),
+            longLat.longitude!.toStringAsFixed(2), _homeController.groupValue);
+      }
+    });
+
+    // _showDialog(); //   اظهر الديالوج بعد ٥ ثواني بعد ما الكونتكست في الinitstate يكون اتبني
   }
 }

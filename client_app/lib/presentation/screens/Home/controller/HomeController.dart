@@ -1,8 +1,10 @@
 import 'dart:ui';
 
 import 'package:client_app/app/global.dart';
+import 'package:client_app/data/cubits/BalanceCubit/BalanceCubit.dart';
 import 'package:client_app/data/cubits/LastOrders/LastOrders_cubit.dart';
 import 'package:client_app/data/cubits/NearbyCubit/NearbyCubit.dart';
+import 'package:client_app/data/cubits/PopularCubit/PopularCubit.dart';
 import 'package:client_app/helpers/CacheHelper.dart';
 import 'package:client_app/helpers/LocationService.dart';
 import 'package:client_app/presentation/screens/Home/components/LastOrder.dart';
@@ -37,5 +39,7 @@ class HomeController {
   void homeAPIs(BuildContext context, lat, long, receiveMethod) {
     LastOrdersCubit.get(context).getLastOrder();
     NearbyCubit.get(context).getNearby(lat, long, receiveMethod);
+    PopularCubit.get(context).getPopular(lat, long);
+    BalanceCubit.get(context).getBalance(CacheHelper.getFromShared("token"));
   }
 }
