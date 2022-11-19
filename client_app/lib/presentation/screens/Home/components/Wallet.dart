@@ -5,7 +5,6 @@ import 'package:client_app/style/icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:sizer/sizer.dart';
 
 class Wallet extends StatelessWidget {
   const Wallet({super.key});
@@ -16,19 +15,19 @@ class Wallet extends StatelessWidget {
       width: double.infinity,
       height: MyApplication.widthClc(context, 86),
       decoration:
-          BoxDecoration(borderRadius: BorderRadius.circular(20.sp), boxShadow: [
+          BoxDecoration(borderRadius: BorderRadius.circular(20), boxShadow: [
         BoxShadow(
-          color: Color(0xFFF5504C).withOpacity(0.9),
-          offset: Offset(0, 0),
+          color: const Color(0xFFF5504C).withOpacity(0.9),
+          offset: const Offset(0, 0),
         ),
         BoxShadow(
-          color: Color(0xFFF5504C).withOpacity(0.2),
-          offset: Offset(0, 15),
+          color: const Color(0xFFF5504C).withOpacity(0.2),
+          offset: const Offset(0, 15),
           blurStyle: BlurStyle.inner,
         )
       ]),
       child: Padding(
-        padding: EdgeInsets.all(8.0.sp),
+        padding: const EdgeInsets.all(8.0),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -46,7 +45,7 @@ class Wallet extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                AutoSizeText(
+                const AutoSizeText(
                   "Available Credit in Wallet",
                   style: TextStyle(
                     fontSize: 16,
@@ -63,14 +62,14 @@ class Wallet extends StatelessWidget {
                         return state is BalanceSuccess
                             ? AutoSizeText(
                                 state.myBalanceModel.data!.balance.toString(),
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 28,
                                   fontWeight: FontWeight.bold,
                                   fontFamily: "Tajawal",
                                   color: Color(0xFFF2F5F7),
                                 ),
                               )
-                            : Center(
+                            : const Center(
                                 child: CircularProgressIndicator(
                                   color: Colors.white,
                                 ),

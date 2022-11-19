@@ -1,22 +1,17 @@
-import 'dart:math';
-
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:client_app/helpers/myApplication.dart';
-import 'package:client_app/presentation/screens/Home/components/HomeAppBar.dart';
 import 'package:client_app/style/icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:sizer/sizer.dart';
 
 class NearbyOrder extends StatelessWidget {
   final String? name;
   final String? pic;
-  NearbyOrder({this.name, this.pic});
+  const NearbyOrder({this.name, this.pic});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(14),
+      padding: const EdgeInsets.all(14),
       margin: EdgeInsets.only(bottom: MyApplication.hightClc(context, 16)),
       height: MyApplication.hightClc(context, 143),
       width: double.infinity,
@@ -25,9 +20,10 @@ class NearbyOrder extends StatelessWidget {
           borderRadius: BorderRadius.circular(20)),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          padding: EdgeInsets.all(1),
+          padding: const EdgeInsets.all(1),
           elevation: 0,
-          backgroundColor: Color.fromARGB(255, 255, 255, 255).withOpacity(0.2),
+          backgroundColor:
+              const Color.fromARGB(255, 255, 255, 255).withOpacity(0.2),
         ),
         onPressed: () {},
         child: Column(
@@ -35,7 +31,7 @@ class NearbyOrder extends StatelessWidget {
             Flexible(
               child: Row(
                 children: [
-                  Container(
+                  SizedBox(
                     height: MyApplication.hightClc(context, 64),
                     width: MyApplication.widthClc(context, 48),
                     child: ClipRRect(
@@ -55,17 +51,17 @@ class NearbyOrder extends StatelessWidget {
                     children: [
                       Text(
                         name!,
-                        style: TextStyle(color: Colors.black),
+                        style: const TextStyle(color: Colors.black),
                       ),
                       Row(
                         children: [
                           Container(
                             decoration: BoxDecoration(
-                                color: Color(0xFFEDEDF4),
+                                color: const Color(0xFFEDEDF4),
                                 borderRadius: BorderRadius.circular(5)),
                             height: MyApplication.hightClc(context, 21),
                             width: MyApplication.widthClc(context, 61),
-                            child: Center(
+                            child: const Center(
                               child: Text(
                                 "Burger",
                                 style: TextStyle(color: Colors.black),
@@ -75,11 +71,11 @@ class NearbyOrder extends StatelessWidget {
                           SizedBox(width: MyApplication.widthClc(context, 8)),
                           Container(
                             decoration: BoxDecoration(
-                                color: Color(0xFFEDEDF4),
+                                color: const Color(0xFFEDEDF4),
                                 borderRadius: BorderRadius.circular(5)),
                             height: MyApplication.hightClc(context, 21),
                             width: MyApplication.widthClc(context, 61),
-                            child: Center(
+                            child: const Center(
                               child: Text("Tasty",
                                   style: TextStyle(color: Colors.black)),
                             ),
@@ -88,10 +84,10 @@ class NearbyOrder extends StatelessWidget {
                       )
                     ],
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Container(
                     decoration: BoxDecoration(
-                        color: Color(0xFFEDEDF4),
+                        color: const Color(0xFFEDEDF4),
                         borderRadius: BorderRadius.circular(10)),
                     height: 40,
                     width: 40,
@@ -118,7 +114,7 @@ class NearbyOrder extends StatelessWidget {
                 SizedBox(
                   width: MyApplication.widthClc(context, 5),
                 ),
-                SizedBox(
+                const SizedBox(
                   child: Text(
                     "4.8 Rating",
                     style: TextStyle(color: Colors.black, fontSize: 12),
@@ -132,7 +128,7 @@ class NearbyOrder extends StatelessWidget {
                 SizedBox(
                   width: MyApplication.widthClc(context, 5),
                 ),
-                SizedBox(
+                const SizedBox(
                   child: Text(
                     "30 Table",
                     style: TextStyle(color: Colors.black, fontSize: 12),
@@ -142,23 +138,23 @@ class NearbyOrder extends StatelessWidget {
                   width: MyApplication.widthClc(context, 24),
                 ),
                 Container(
-                    margin: EdgeInsets.only(top: 10),
+                    margin: const EdgeInsets.only(top: 10),
                     height: 20,
                     // width: 24,
                     child: Image.asset(clockk)),
                 SizedBox(
                   width: MyApplication.widthClc(context, 5),
                 ),
-                SizedBox(
+                const SizedBox(
                   child: Text(
                     "40 min",
                     style: TextStyle(color: Colors.black, fontSize: 12),
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
                 Container(
                   decoration: BoxDecoration(
-                      color: Color(0xFFEDEDF4),
+                      color: const Color(0xFFEDEDF4),
                       borderRadius: BorderRadius.circular(10)),
                   height: 40,
                   width: 40,

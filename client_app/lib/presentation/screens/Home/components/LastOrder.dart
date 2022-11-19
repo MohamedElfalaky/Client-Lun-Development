@@ -1,12 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:client_app/data/cubits/LastOrders/LastOrders_cubit.dart';
 import 'package:client_app/helpers/myApplication.dart';
-import 'package:client_app/presentation/screens/Home/components/HomeAppBar.dart';
 import 'package:client_app/style/icons.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:sizer/sizer.dart';
 
 class LastOrder extends StatelessWidget {
   final resturantName;
@@ -16,33 +12,34 @@ class LastOrder extends StatelessWidget {
   String? orderState;
   Color? orderStateColor;
 
-  LastOrder(
-      {super.key,
-      this.resturantName,
-      this.orderPrice,
-      this.resturantImage,
-      this.orderStateId});
-
   var orderContainer = Container(
     height: 24,
     width: 86,
     decoration: BoxDecoration(
-        color: Color(0xFFEDEDF4), borderRadius: BorderRadius.circular(20)),
+        color: const Color(0xFFEDEDF4),
+        borderRadius: BorderRadius.circular(20)),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        Container(
+        SizedBox(
           height: 12,
           width: 14,
           child: SvgPicture.asset(reOrder),
         ),
-        AutoSizeText(
+        const AutoSizeText(
           "Re-order",
           style: TextStyle(fontSize: 12, color: Colors.black),
         )
       ],
     ),
   );
+
+  LastOrder(
+      {super.key,
+      this.resturantName,
+      this.orderPrice,
+      this.resturantImage,
+      this.orderStateId});
 
   @override
   Widget build(BuildContext context) {
@@ -51,28 +48,28 @@ class LastOrder extends StatelessWidget {
         orderStateId == 3 ||
         orderStateId == 4) {
       orderState = "received";
-      orderStateColor = Color.fromARGB(255, 234, 49, 234);
+      orderStateColor = const Color.fromARGB(255, 234, 49, 234);
       orderContainer = Container();
     } else if (orderStateId == 5) {
       orderState = "delivered";
-      orderStateColor = Color(0xFF31EA5C);
+      orderStateColor = const Color(0xFF31EA5C);
     } else if (orderStateId == 6) {
       orderState = "canceled";
-      orderStateColor = Color.fromARGB(255, 208, 32, 32);
+      orderStateColor = const Color.fromARGB(255, 208, 32, 32);
       // orderContainer = Container();
     } else if (orderStateId == 7) {
       orderState = "refunded";
-      orderStateColor = Color.fromARGB(255, 17, 65, 221);
+      orderStateColor = const Color.fromARGB(255, 17, 65, 221);
     }
     return ElevatedButton(
         style: ElevatedButton.styleFrom(
-          padding: EdgeInsets.all(1),
+          padding: const EdgeInsets.all(1),
           elevation: 0,
           backgroundColor: Theme.of(context).colorScheme.secondary,
         ),
         onPressed: () {},
         child: Container(
-            padding: EdgeInsets.all(8),
+            padding: const EdgeInsets.all(8),
             margin: EdgeInsets.symmetric(
                 horizontal: MyApplication.widthClc(context, 4)),
             height: MyApplication.hightClc(context, 135),
@@ -88,7 +85,7 @@ class LastOrder extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Container(
+                    SizedBox(
                       height: 50,
                       width: 50,
                       child: ClipRRect(
@@ -118,20 +115,21 @@ class LastOrder extends StatelessWidget {
                   ],
                 ),
                 Container(
-                  margin: EdgeInsets.only(left: 8),
+                  margin: const EdgeInsets.only(left: 8),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                        margin: EdgeInsets.symmetric(vertical: 6),
+                        margin: const EdgeInsets.symmetric(vertical: 6),
                         child: AutoSizeText(
                           resturantName,
-                          style: TextStyle(fontSize: 14, color: Colors.black),
+                          style: const TextStyle(
+                              fontSize: 14, color: Colors.black),
                         ),
                       ),
                       AutoSizeText(
                         '${orderPrice.toString()} SAR',
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 12,
                             color: Colors.black,
                             fontWeight: FontWeight.bold),
@@ -139,7 +137,7 @@ class LastOrder extends StatelessWidget {
                       SizedBox(
                         height: MyApplication.hightClc(context, 8),
                       ),
-                      AutoSizeText(
+                      const AutoSizeText(
                         "1 X Half grilled chicken, +2 more",
                         style: TextStyle(fontSize: 10, color: Colors.black),
                       ),
@@ -160,18 +158,18 @@ class LastOrder extends StatelessWidget {
                               height: MyApplication.hightClc(context, 24),
                               width: MyApplication.widthClc(context, 86),
                               decoration: BoxDecoration(
-                                  color: Color(0xFFEDEDF4),
+                                  color: const Color(0xFFEDEDF4),
                                   borderRadius: BorderRadius.circular(20)),
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
-                                  Container(
+                                  SizedBox(
                                     height: 12,
                                     width: 14,
                                     child: SvgPicture.asset(rateOrder),
                                   ),
-                                  AutoSizeText(
+                                  const AutoSizeText(
                                     "Rate order",
                                     style: TextStyle(
                                         fontSize: 12, color: Colors.black),

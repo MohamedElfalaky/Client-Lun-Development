@@ -3,7 +3,7 @@ import 'package:client_app/helpers/myApplication.dart';
 import 'package:client_app/style/icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:sizer/sizer.dart';
+
 import '../../../../app/global.dart';
 
 class myAppBar extends StatelessWidget {
@@ -24,12 +24,12 @@ class myAppBar extends StatelessWidget {
             height: MyApplication.hightClc(context, 52),
             width: MyApplication.widthClc(context, 48),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8.sp),
+              borderRadius: BorderRadius.circular(8),
               color: Colors.white.withOpacity(.5),
             ),
-            child: Icon(
+            child: const Icon(
               Icons.menu,
-              size: 30.sp,
+              size: 30,
               color: Colors.black,
             ),
           ),
@@ -72,7 +72,7 @@ class myAppBar extends StatelessWidget {
                 SizedBox(
                   height: MyApplication.hightClc(context, 10),
                   width: MyApplication.widthClc(context, 10),
-                  child: Icon(
+                  child: const Icon(
                     Icons.arrow_drop_down,
                     color: Color(0xFF363537),
                   ),
@@ -82,12 +82,12 @@ class myAppBar extends StatelessWidget {
           ),
           Container(
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8.sp),
+                borderRadius: BorderRadius.circular(8),
                 color: Colors.white.withOpacity(.5),
               ),
               height: MyApplication.hightClc(context, 52),
               width: MyApplication.widthClc(context, 48),
-              padding: EdgeInsets.all(6.sp),
+              padding: const EdgeInsets.all(6),
               child: SvgPicture.asset(searchIcon)),
         ],
       ),

@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:client_app/app/global.dart';
 import 'package:client_app/data/cubits/LastOrders/LastOrders_cubit.dart';
@@ -16,10 +14,9 @@ import 'package:client_app/style/icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:sizer/sizer.dart';
 
 class HomeScreen extends StatefulWidget {
-  HomeScreen({super.key});
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -44,12 +41,12 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Wallet(),
+                const Wallet(),
                 SizedBox(
                   height: MyApplication.hightClc(context, 36),
                 ),
 
-                AutoSizeText(
+                const AutoSizeText(
                   "Receive Method",
                   style: TextStyle(
                       fontSize: 16,
@@ -63,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
                 BlocBuilder<LastOrdersCubit, LastOrderState>(
                   builder: (context, state) {
-                    return Container(
+                    return SizedBox(
                         height: MyApplication.hightClc(context, 48),
                         width: double.infinity,
                         child: Row(
@@ -77,12 +74,12 @@ class _HomeScreenState extends State<HomeScreen> {
                             }
                           ].map((listItem) {
                             return Container(
-                              padding: EdgeInsets.all(12.sp),
+                              padding: const EdgeInsets.all(12),
                               height: double.infinity,
                               width: MyApplication.widthClc(context, 182),
                               decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.circular(10.sp)),
+                                  borderRadius: BorderRadius.circular(10)),
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
@@ -140,7 +137,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     SizedBox(
                       height: MyApplication.hightClc(context, 26),
                     ),
-                    AutoSizeText(
+                    const AutoSizeText(
                       "Last Orders",
                       style: TextStyle(
                           fontSize: 20,
@@ -184,7 +181,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                             : noReturant,
                                       );
                                     })
-                                : Center(
+                                : const Center(
                                     child: CircularProgressIndicator(
                                       color: Colors.amber,
                                     ),
@@ -205,14 +202,14 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     Row(
                       children: [
-                        AutoSizeText(
+                        const AutoSizeText(
                           "Nearby",
                           style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
                               fontFamily: "Tajawal"),
                         ),
-                        Spacer(),
+                        const Spacer(),
                         AutoSizeText(
                           "View all",
                           style: TextStyle(
@@ -251,7 +248,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                     .first
                                                     .thumb
                                                 : noReturant))
-                                : Center(
+                                : const Center(
                                     child: CircularProgressIndicator(),
                                   ));
                       },
@@ -265,7 +262,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     SizedBox(
                       height: MyApplication.hightClc(context, 26),
                     ),
-                    AutoSizeText(
+                    const AutoSizeText(
                       "Features",
                       style: TextStyle(
                           fontSize: 20,
@@ -277,7 +274,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     BlocBuilder<PopularCubit, PopularState>(
                       builder: (context, state) {
-                        return Container(
+                        return SizedBox(
                             height: MyApplication.hightClc(context, 250),
                             width: double.infinity,
                             child: state is PopularSuccess
@@ -312,7 +309,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   .thumb
                                               : noReturantCover,
                                         ))
-                                : Center(
+                                : const Center(
                                     child: CircularProgressIndicator(),
                                   ));
                       },
