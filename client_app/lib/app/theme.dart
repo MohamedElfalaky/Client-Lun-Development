@@ -13,6 +13,7 @@ final ThemeData myTheme = ThemeData(
     800: Color(0xff610805),
     900: Color(0xff300403)
   }),
+  visualDensity: VisualDensity.adaptivePlatformDensity,
   brightness: Brightness.light,
   primaryColor: const Color(0xfff5504c),
   primaryColorLight: const Color(0xfffcd0cf),
@@ -21,7 +22,7 @@ final ThemeData myTheme = ThemeData(
       primary: Color(0xfff5504c),
       secondary: Color(0xffededf4),
       surface: Color(0xffffffff),
-      background: Color(0xffffffff),
+      background: Color(0xfff2f5f7),
       error: Color(0xffb00020),
       onPrimary: Color(0xffffffff),
       onSecondary: Color(0xff000000),

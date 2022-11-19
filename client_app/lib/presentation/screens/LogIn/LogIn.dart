@@ -1,17 +1,20 @@
 import 'package:client_app/data/cubits/Login_cubit/login_cubit.dart';
 import 'package:client_app/helpers/myApplication.dart';
 import 'package:client_app/presentation/screens/LogIn/components/Buttons.dart';
-import 'package:client_app/presentation/screens/LogIn/components/CountryPickerContainer.dart';
-import 'package:client_app/presentation/screens/LogIn/components/PhoneTextField.dart';
 import 'package:client_app/presentation/screens/LogIn/components/PasswordTextField.dart';
-import 'package:client_app/presentation/widgets/MyButton.dart';
-import 'package:client_app/presentation/widgets/myFormTextField.dart';
-import 'package:client_app/presentation/widgets/shared.dart';
+import 'package:client_app/presentation/screens/LogIn/components/PhoneTextField.dart';
 import 'package:client_app/style/icons.dart';
 import 'package:fl_country_code_picker/fl_country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+
+const countryPicker = FlCountryCodePicker();
+
+CountryCode? countryCode;
+final passwordText = TextEditingController();
+final phoneText = TextEditingController();
+final _formKey = GlobalKey<FormState>();
 
 class LogIn extends StatefulWidget {
   const LogIn({super.key});
@@ -19,13 +22,6 @@ class LogIn extends StatefulWidget {
   @override
   State<LogIn> createState() => _LogInState();
 }
-
-final _formKey = GlobalKey<FormState>();
-const countryPicker = FlCountryCodePicker();
-final phoneText = TextEditingController();
-final passwordText = TextEditingController();
-
-CountryCode? countryCode;
 
 class _LogInState extends State<LogIn> {
   @override
@@ -98,12 +94,12 @@ class _LogInState extends State<LogIn> {
                             mainAxisSize: MainAxisSize.min,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              PhoneTextField(),
+                              const PhoneTextField(),
                               BlocConsumer<LoginCubit, LoginState>(
                                   listener: (context, state) {
                                 // TODO: implement listener
                               }, builder: (context, state) {
-                                return PasswordTextField();
+                                return const PasswordTextField();
                               }),
                               Buttons(
                                 formKey: _formKey,
@@ -115,7 +111,7 @@ class _LogInState extends State<LogIn> {
                       SizedBox(
                         height: MyApplication.hightClc(context, 80),
                       ),
-                      Text(
+                      const Text(
                         "All Rights Reserved LUN Development 2021©",
                         style: TextStyle(color: Color(0xFFEDEDF4)),
                       )
