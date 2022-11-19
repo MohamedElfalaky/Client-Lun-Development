@@ -19,6 +19,7 @@ class HomeController {
 
   ///methods
 //branch2
+  //xx
   void myGetLocation(setState) async {
     final service = LocationService();
     final locationData = await service.getLocation();
