@@ -6,14 +6,21 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 part 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
-  LoginCubit() : super(LoginInitial());
-
   LoginRepo logInRepo = LoginRepo();
-  static LoginCubit get(context) => BlocProvider.of(context);
+
   bool isHiddenPass = true;
-  Icon? securityIcon = Icon(
+  Icon? securityIcon = const Icon(
     Icons.visibility_off,
   );
+  LoginCubit() : super(LoginInitial());
+  void showPassWord() {
+    isHiddenPass = !isHiddenPass;
+
+    isHiddenPass
+        ? securityIcon = const Icon(Icons.visibility_off)
+        : securityIcon = const Icon(Icons.visibility);
+    emit(PasswordShown());
+  }
 
   void userLogin({required phone, required password}) {
     try {
@@ -30,12 +37,5 @@ class LoginCubit extends Cubit<LoginState> {
     }
   }
 
-  void showPassWord() {
-    isHiddenPass = !isHiddenPass;
-
-    isHiddenPass
-        ? securityIcon = Icon(Icons.visibility_off)
-        : securityIcon = Icon(Icons.visibility);
-    emit(PasswordShowen());
-  }
+  static LoginCubit get(context) => BlocProvider.of(context);
 }
