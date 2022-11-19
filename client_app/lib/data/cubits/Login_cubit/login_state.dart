@@ -17,4 +17,4 @@ class LoginError extends LoginState {
   LoginError({this.error});
 }
 
-class PasswordShowen extends LoginState {}
+class PasswordShown extends LoginState {}

@@ -4,7 +4,6 @@ import 'package:client_app/helpers/myApplication.dart';
 import 'package:client_app/presentation/screens/LogIn/LogIn.dart';
 import 'package:client_app/presentation/screens/OnboardingScreen/OnBoarding.dart';
 import 'package:client_app/presentation/screens/Registration/Registeration.dart';
-import 'package:client_app/presentation/screens/ResetPassword/ResetPassword.dart';
 import 'package:client_app/presentation/widgets/MyButton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -23,15 +22,12 @@ class Buttons extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            InkWell(
-              onTap: () => MyApplication.navigateTo(ResetPassword(), context),
-              child: Text(
-                "Recover Password",
-                style: TextStyle(
-                    fontSize: 16,
-                    color:
-                        Theme.of(context).colorScheme.primary.withOpacity(0.8)),
-              ),
+            Text(
+              "Recover Password",
+              style: TextStyle(
+                  fontSize: 16,
+                  color:
+                      Theme.of(context).colorScheme.primary.withOpacity(0.8)),
             )
           ],
         ),
