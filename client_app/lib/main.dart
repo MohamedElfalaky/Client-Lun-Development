@@ -79,6 +79,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
         BlocProvider<OrderDartCubit>(create: (context) => OrderDartCubit()),
         BlocProvider<OrderDetailsCubit>(
             create: (context) => OrderDetailsCubit()),
+        //
       ],
       child: BlocBuilder<LocalCubit, LocalState>(
         builder: (context, state) {
