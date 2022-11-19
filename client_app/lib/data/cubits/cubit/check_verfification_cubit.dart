@@ -17,10 +17,10 @@ class CheckVerfificationCubit extends Cubit<CheckVerfificationState> {
       if (data!.success == true) {
         emit(CheckVerfificationLoaded(checkVerfification: data));
       } else {
-        emit(CheckVerfificationError());
+        emit(CheckVerfificationError(message: data.message));
       }
     } catch (e) {
-      emit(CheckVerfificationError());
+      emit(CheckVerfificationError(message: e.toString()));
     }
     return null;
   }

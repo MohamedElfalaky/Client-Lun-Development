@@ -2,7 +2,10 @@ import 'dart:async';
 
 import 'package:client_app/data/cubits/cubit/check_verfification_cubit.dart';
 import 'package:client_app/helpers/AppLocalizations.dart';
+import 'package:client_app/helpers/myApplication.dart';
+import 'package:client_app/main.dart';
 import 'package:client_app/presentation/screens/CreateAccount/CreateAccount.dart';
+import 'package:client_app/presentation/screens/NewPassword/NewPassword.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -193,10 +196,10 @@ class _SendOTPState extends State<SendOTP> {
                                       if (kDebugMode) {
                                         print('success');
                                       }
-                                      // MyApplication.showToast(
-                                      //   text: 'phone is exist',
-                                      //   color: ToastColors.success,
-                                      // );
+                                      MyApplication.showToast(
+                                        text: 'phone is exist',
+                                        color: ToastColors.success,
+                                      );
                                       Navigator.of(context).push(
                                         MaterialPageRoute(
                                           builder: (context) =>
@@ -204,20 +207,26 @@ class _SendOTPState extends State<SendOTP> {
                                         ),
                                       );
                                     }
-                                  } else if (state is CheckVerfificationError) {
-                                    if (kDebugMode) {
-                                      print('error');
+                                    if (state.checkVerfification!.success ==
+                                        false) {
+                                      if (kDebugMode) {
+                                        // showToast(
+                                        //     text: state
+                                        //         .checkVerfification!.message!,
+                                        //     color: ToastColors.error);
+                                      }
+                                      MyApplication.showToast(
+                                          text: state
+                                              .checkVerfification!.message!,
+                                          color: ToastColors.error);
+                                      // navigateTo(
+                                      //   context,
+                                      //   PhoneOTP(
+                                      //     phone: _phone.text,
+                                      //     flagNumber: flagNumber,
+                                      //   ),
+                                      // );
                                     }
-                                    Navigator.of(context).push(
-                                      MaterialPageRoute(
-                                        builder: (context) => CreateAccount(
-                                          phone: widget.phone,
-                                        ),
-                                      ),
-                                    );
-                                    // MyApplication.showToast(
-                                    //     text: state.message,
-                                    //     color: ToastColors.error);
                                   }
                                 },
                                 builder: (context, state) {

@@ -26,99 +26,71 @@ Widget defaultTextField({
   Color prefixColor = Colors.black,
   Color labelColor = Colors.grey,
   Color cursorColor = Colors.black,
-  double prefixSize = 24,
-  double suffixSize = 24,
+  double prefixSize = 20,
+  double suffixSize = 20,
   Function? validate,
 }) =>
-    TextFormField(
-      cursorColor: cursorColor,
-      controller: controller,
-      validator: (value) {
-        if (validate != null) {
-          return validate(value) as String?;
-        }
-        return null;
-      },
-      keyboardType: type,
-      obscureText: isPassword,
-      onFieldSubmitted: (value) {
-        onSubmit == null ? (value) {} : onSubmit(value);
-      },
-      onChanged: (value) {
-        onChange == null ? (value) {} : onChange(value);
-      },
-      onTap: () {
-        onTap == null ? (value) {} : onTap();
-      },
-      readOnly: isReadOnly,
-      enabled: isClickable,
-      decoration: InputDecoration(
-        errorText: null,
-        errorStyle: TextStyle(color: textColor, fontSize: 12),
-        hintText: hint,
-        labelText: label,
-        labelStyle: TextStyle(
-          color: labelColor,
-          fontSize: textSize,
+    Container(
+      width: width,
+      height: height,
+      decoration: BoxDecoration(
+        color: color,
+        borderRadius: BorderRadius.circular(
+          radius,
         ),
-        prefixIcon: prefix != null
-            ? Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: prefix,
-              )
-            : null,
-        suffixIcon: suffix != null
-            ? IconButton(
-                onPressed: () {
-                  suffixPressed!();
-                },
-                icon: Icon(suffix, color: suffixColor, size: suffixSize),
-              )
-            : null,
         border: isBorder
-            ? OutlineInputBorder(
-                borderRadius: BorderRadius.circular(radius),
-                borderSide: BorderSide(
-                  color: borderColor,
-                  width: 1,
-                ),
+            ? Border.all(
+                color: borderColor,
               )
-            : InputBorder.none,
-        focusedBorder: isBorder
-            ? OutlineInputBorder(
-                borderRadius: BorderRadius.circular(radius),
-                borderSide: BorderSide(
-                  color: borderColor,
-                  width: 1,
-                ),
-              )
-            : InputBorder.none,
-        enabledBorder: isBorder
-            ? OutlineInputBorder(
-                borderRadius: BorderRadius.circular(radius),
-                borderSide: BorderSide(
-                  color: borderColor,
-                  width: 1,
-                ),
-              )
-            : InputBorder.none,
-        disabledBorder: isBorder
-            ? OutlineInputBorder(
-                borderRadius: BorderRadius.circular(radius),
-                borderSide: BorderSide(
-                  color: borderColor,
-                  width: 1,
-                ),
-              )
-            : InputBorder.none,
-        errorBorder: isBorder
-            ? OutlineInputBorder(
-                borderRadius: BorderRadius.circular(radius),
-                borderSide: BorderSide(
-                  color: borderColor,
-                  width: 1,
-                ),
-              )
-            : InputBorder.none,
+            : null,
+      ),
+      child: TextFormField(
+        cursorColor: cursorColor,
+        controller: controller,
+        validator: (value) {
+          if (validate != null) {
+            return validate(value) as String?;
+          }
+          return null;
+        },
+        keyboardType: type,
+        obscureText: isPassword,
+        onFieldSubmitted: (value) {
+          onSubmit == null ? (value) {} : onSubmit(value);
+        },
+        onChanged: (value) {
+          onChange == null ? (value) {} : onChange(value);
+        },
+        onTap: () {
+          onTap == null ? (value) {} : onTap();
+        },
+        readOnly: isReadOnly,
+        enabled: isClickable,
+        decoration: InputDecoration(
+          hintText: hint,
+          labelText: label,
+          labelStyle: TextStyle(
+            color: labelColor,
+            fontSize: textSize,
+          ),
+          prefixIcon: prefix != null
+              ? Padding(
+                  padding: const EdgeInsets.only(right: 20),
+                  child: prefix,
+                )
+              : null,
+          suffixIcon: suffix != null
+              ? Padding(
+                  padding: const EdgeInsets.only(),
+                  child: IconButton(
+                    onPressed: () {
+                      suffixPressed!();
+                    },
+                    icon: Icon(suffix, color: suffixColor, size: suffixSize),
+                  ),
+                )
+              : null,
+          border: const UnderlineInputBorder(),
+        ),
       ),
     );

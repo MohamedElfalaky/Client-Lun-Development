@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
-
 import 'package:client_app/app/constants.dart';
 import 'package:client_app/data/Models/CheckVerfication/check.verification.dart';
 import 'package:client_app/helpers/myApplication.dart';

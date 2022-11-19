@@ -12,7 +12,7 @@ class AboutUsRepo {
   Future<AboutUsModel?> getAboutUs() async {
     try {
       var response = await http.get(
-        Uri.parse('$apikey/page?id=1'),
+        Uri.parse('$baseURL/page?id=1'),
         headers: headers,
       );
       // var response2 = await http.post(
