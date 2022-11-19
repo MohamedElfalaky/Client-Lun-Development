@@ -18,7 +18,7 @@ class HomeController {
       CacheHelper.getBoolFromShared("isDailogFirstAppearance");
 
   ///methods
-
+//branch
   void myGetLocation(setState) async {
     final service = LocationService();
     final locationData = await service.getLocation();
