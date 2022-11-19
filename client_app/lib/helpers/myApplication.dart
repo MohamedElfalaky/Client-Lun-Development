@@ -166,7 +166,6 @@ class MyApplication {
 ]
 ''';
 
-
   bool checkInternet() {
     return true;
   }
@@ -212,11 +211,6 @@ class MyApplication {
   }
 }
 
-enum ToastColors {
-  success,
-  error,
-  warning,
-}
 class MySeparator extends StatelessWidget {
   final double height;
   final Color color;
@@ -247,4 +241,10 @@ class MySeparator extends StatelessWidget {
       },
     );
   }
+}
+
+enum ToastColors {
+  success,
+  error,
+  warning,
 }
