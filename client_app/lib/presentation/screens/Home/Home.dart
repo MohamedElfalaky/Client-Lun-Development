@@ -99,7 +99,7 @@ class _HomeState extends State<Home> {
   }
 
   void asyncronaceInsideInit() async {
-    myGetLocation();
+    // myGetLocation();
     LocationData longLat = await myGetLocation();
     // Future.delayed(Duration(milliseconds: 100)).then((value) => null);
 
