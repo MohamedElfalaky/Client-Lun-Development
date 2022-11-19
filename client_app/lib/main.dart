@@ -11,6 +11,9 @@ import 'package:client_app/helpers/AppLocalizations.dart';
 import 'package:client_app/helpers/CacheHelper.dart';
 import 'package:client_app/presentation/screens/MyOrders/MyOrders.dart';
 import 'package:client_app/presentation/screens/MyWallet/MyWalletScreen.dart';
+import 'package:client_app/presentation/screens/Home/Home.dart';
+import 'package:client_app/presentation/screens/MyOrders/MyOrders.dart';
+import 'package:client_app/presentation/screens/MyWallet/MyWalletScreen.dart';
 import 'package:client_app/presentation/screens/OnboardingScreen/OnBoarding.dart';
 import 'package:client_app/presentation/screens/OrderDetails/OrderDetails.dart';
 import 'package:client_app/presentation/screens/Registration/Registeration.dart';
@@ -31,7 +34,8 @@ void main() async {
   Bloc.observer = MyBlocObserver();
   await CacheHelper.init();
 
-  // CacheHelper.saveBoolToShared("showHome", false); // بمسح الكاش بتاع الاونبوردنج
+  CacheHelper.saveBoolToShared(
+      "showHome", false); // بمسح الكاش بتاع الاونبوردنج
   runApp(const MyApp());
 }
 
@@ -120,7 +124,6 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
     );
   }
 
-  // This widget is the root of your application.
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
