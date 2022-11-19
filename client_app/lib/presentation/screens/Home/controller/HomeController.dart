@@ -17,7 +17,7 @@ class HomeController {
   bool? isDailogFirstAppearance =
       CacheHelper.getBoolFromShared("isDailogFirstAppearance");
 
-  ///methods
+  ///methodss
 
   void myGetLocation(setState) async {
     final service = LocationService();
